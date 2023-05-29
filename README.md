@@ -25,6 +25,14 @@ Accuracy per attack type (normal, DoS, Brute Force, Web attack, Infiltration, Bo
 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/70883e89-916c-4eea-850f-92d399922307)
 
+Quantification of enhancements of AI models in detecting attacks (given by number of AI models with best performance) under feature selection.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/6e434527-809c-485b-900d-9bf5e8cad178)
+
+Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/25c06187-7c24-44fe-9936-49a83a728c7f)
+
 
 
 
