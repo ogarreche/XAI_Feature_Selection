@@ -9,6 +9,25 @@ Low-Level XAI Feature Selection Components
 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/6425a0b4-6b67-4e2a-b778-77ff5a065f14)
 
+Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/4a15e590-5851-40a9-9724-7e12ddf2f63d)
+
+Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/4b48f04d-48ec-4973-b1cb-b9836847005e)
+
+Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/7b365cea-ddbf-4030-a64c-a3d73cf7cb76)
+
+Accuracy per attack type (normal, DoS, Brute Force, Web attack, Infiltration, Bot, and Port Scan) for the CICIDS-2017 dataset with all features.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/70883e89-916c-4eea-850f-92d399922307)
+
+
+
+
 # How to use the programs:
 
 
