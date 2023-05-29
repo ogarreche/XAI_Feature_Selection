@@ -10,3 +10,9 @@ Low-Level XAI Feature Selection Components
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/6425a0b4-6b67-4e2a-b778-77ff5a065f14)
 
 # How to use the programs:
+
+
+Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_final.py in the CICIDS-2017 folder will run the DNN model with 15 features for that given dataset. On the other hand. DNN_all_final.py will run the DNN model for all features for the given dataset).
+Download that program 'utils.py' and leave it in the folder of the model program.
+Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the Global Summary/Beeswarm Plot.
