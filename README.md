@@ -9,7 +9,7 @@ The lack of performance evaluation and explainability of artificial intelligence
 
 Low-Level XAI Feature Selection Components
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/images/flow.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/flow.png?raw=true)
 
 Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.
 
