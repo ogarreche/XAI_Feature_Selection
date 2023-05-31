@@ -37,6 +37,7 @@ Comparison of AI performance under top features selected by our framework versus
 
  
 # How to use the programs:
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/d46a98b2-ca98-4bc7-aac9-a24db2f2c205)
 
 
 - Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
