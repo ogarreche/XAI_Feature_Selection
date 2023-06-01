@@ -13,7 +13,7 @@ Low-Level XAI Feature Selection Components
 
 Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Overall%performances%for%AI%models%with%different%feature%setups%for%the%RoEduNet-SIMARGL2021%dataset.png?raw=true)
 
 Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.
 
