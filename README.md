@@ -13,27 +13,27 @@ Low-Level XAI Feature Selection Components
 
 Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/4a15e590-5851-40a9-9724-7e12ddf2f63d)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.png?raw=true)
 
 Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/4b48f04d-48ec-4973-b1cb-b9836847005e)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.png?raw=true)
 
 Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/7b365cea-ddbf-4030-a64c-a3d73cf7cb76)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.png?raw=true)
 
 Accuracy per attack type (normal, DoS, Brute Force, Web attack, Infiltration, Bot, and Port Scan) for the CICIDS-2017 dataset with all features.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/70883e89-916c-4eea-850f-92d399922307)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Accuracy per attack type (normal, DoS, Brute Force, Web attack, Infiltration, Bot, and Port Scan) for the CICIDS-2017 dataset with all features.png?raw=true)
 
 Quantification of enhancements of AI models in detecting attacks (given by number of AI models with best performance) under feature selection.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/6e434527-809c-485b-900d-9bf5e8cad178)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Quantification of enhancements of AI models in detecting attacks (given by number of AI models with best performance) under feature selection.png?raw=true)
 
 Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/25c06187-7c24-44fe-9936-49a83a728c7f)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.png?raw=true)
 
 
 
