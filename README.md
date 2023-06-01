@@ -70,7 +70,7 @@ Comparison of AI performance under top features selected by our framework versus
 - Download that program 'utils.py' and leave it in the folder of the model program.
 - The program is standalone program that outputs top features using the Feature Importance method.
 
-### SHAP feature selection (Used in methods below)
+### Model Specific Features through SHAP (Used in methods below)
 
 - Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
 - The programs can be found inside the folder CICIDS-2017/SHAP or RoEduNet-SIMARGL2021/SHAP and end with sulfix final.
@@ -81,11 +81,23 @@ Comparison of AI performance under top features selected by our framework versus
 
 ### Common features by overall rank
 
+This method each feature rank for the models to create only one overall feature rank for all models. This is achieved by calculating the average rank of each individual feature across all AI models.
+
 ### Common features by overall weighted rank
+
+This method builds upon the previous one. However, the difference is that it takes into consideration the SHAP values for each feature and the accuracy for each AI model, instead of the sequential numeration.
+The importance of feature is calculated by the sum of the product of SHAP value and accuracy of that AI model for that feature. Then, the features are ranked according to average of that sum.
 
 ### Common features by overall normalized weighted rank
 
+This method is the same as the last one but with one difference. It normalizes all the SHAP values. During the experiments it was noted that some models such as LightGBM results in SHAP values with values that are much bigger others ones. Therefore, the normalization step was added to avoid such bias.
+
 ### Models + Attacks ranking score
 
+This methods extracts significant intrusion features via selecting the top-𝑘 ranked features across all different AI models and all different intrusion types. Suppose the set of AI intrusion detection models is denoted by M in which each entry 𝑚 ∈ M represents one black-box AI model and that the set of intrusion types be given by A in which 𝑎 ∈ A represents one intrusion class. We calculate the overall ranking score of each feature (given by 𝑟𝑖) as follows. 𝑟𝑖 = 1 2 ˝𝑚|M | ∈M 𝑟𝑖𝑚 + ˝𝑎|A | ∈A 𝑟𝑖𝑎  , where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚 ∈ M and intrusion 𝑎 ∈ A, respectively. The overall ranking score of a feature 𝑖 (𝑟𝑖) is given by the weighted sum of both the feature rank across all AI models and across all intrusion types. We then chose the 𝑘 features with lowest rank value. Note that the lower 𝑟𝑖, the higher the feature rank.
+
 ### Combined selection (Takes in consideration the seven methods used before)
+
+In this method, we give a weight to each feature that depends on the frequency of appearance of this feature among top-𝑘 features in all proposed feature selection methods. In other words, the selection of feature here depends on its combined importance among all other proposed methods. We next show well known feature selection methods that are used in this work as baselines to our proposed methods. For these
+methods, most of them do no need to train models beforehand.
 
