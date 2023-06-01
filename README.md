@@ -116,3 +116,13 @@ Where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚
 In this method, we give a weight to each feature that depends on the frequency of appearance of this feature among top-𝑘 features in all proposed feature selection methods. In other words, the selection of feature here depends on its combined importance among all other proposed methods. We next show well known feature selection methods that are used in this work as baselines to our proposed methods. For these
 methods, most of them do no need to train models beforehand.
 
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/2cf2d21f-1bd9-4994-bae8-60374d50a59e)
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/2bdbb356-470f-4758-8be5-84d1e294c1f7)
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/e9d6990b-7f9d-4a18-ad6e-5e1651ea7477)
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/b7c78cbe-0f38-42e8-a3c6-f27caac46531)
+
+
+
