@@ -30,7 +30,7 @@ https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Acc
 
 Quantification of enhancements of AI models in detecting attacks (given by number of AI models with best performance) under feature selection.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Quantification of enhancements of AI models in detecting attacks (given by number of AI models with best performance) under feature selection.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Quantification%20of%20enhancements%20of%20AI%20models%20in%20detecting%20attacks%20(given%20by%20number%20of%20AI%20models%20with%20best%20performance)%20under%20feature%20selection.png?raw=true)
 
 Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.
 
