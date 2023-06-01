@@ -161,7 +161,7 @@ frames = [df0, df1, df2, df3, df4, df5, df7, df8, df9, df10, df11, df12, df13, d
 df = pd.concat(frames,ignore_index=True)
 
 # shuffle the DataFrame rows
-df = df.sample(frac =1)
+df = df.sample(frac =0.1)
 
 # assign alert column to y
 y = df.pop('ALERT')
@@ -350,7 +350,7 @@ print('-------------------------------------------------------------------------
 # ## Summary Bar Plot Global
 explainer = shap.TreeExplainer(model)
 start_index = 0
-end_index = 500
+end_index = 100
 shap_values = explainer.shap_values(test[start_index:end_index])
 
 shap_obj = explainer(test[start_index:end_index])
@@ -365,5 +365,12 @@ shap.summary_plot(shap_values = np.take(shap_obj.values,0,axis=-1),
                   features = test[start_index:end_index],show=False)
 plt.savefig('Light_Shap_Summary_Beeswarms.png')
 plt.clf()
+
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)
 
 

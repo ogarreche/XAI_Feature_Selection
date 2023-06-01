@@ -132,7 +132,7 @@ df19 = pd.read_csv  ('sensor_db/portscanning-03-20-2022-14-27-49.csv', usecols=r
 
 frames = [df0, df1, df2, df3, df4, df5, df7, df8, df9, df10, df11, df12, df13, df14, df15, df16, df17, df18, df19]
 df = pd.concat(frames,ignore_index=True)
-df = df.sample(frac = 1)
+df = df.sample(frac = 0.07)
 print('---------------------------------------------------------------------------------')
 print('Normalizing')
 print('---------------------------------------------------------------------------------')
@@ -254,7 +254,7 @@ for i in range(0,len(TP)):
 test.pop('ALERT')
 test.pop('is_train')
 start_index = 0
-end_index = 500
+end_index = 50
 explainer = shap.KernelExplainer(model.predict_proba, test[start_index:end_index])
 shap_values = explainer.shap_values(test[start_index:end_index])
 
@@ -268,4 +268,13 @@ shap.summary_plot(shap_values = shap_values[0],
                   class_names=[label[0],label[1],label[2]],show=False)
 plt.savefig('SVM_Shap_Summary_Beeswarms.png')
 plt.clf()
+
+
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)
+
 #----------------------------------------------------------------

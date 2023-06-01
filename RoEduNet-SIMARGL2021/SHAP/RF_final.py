@@ -128,6 +128,12 @@ req_cols = ['PROTOCOL_MAP','FLOW_DURATION_MILLISECONDS','TCP_FLAGS','TCP_WIN_MAX
 'TCP_WIN_MAX_OUT','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT','TCP_WIN_MSS_IN','TCP_WIN_SCALE_IN',
 'TCP_WIN_SCALE_OUT','SRC_TOS','DST_TOS','ALERT']
 
+req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
+            'TOTAL_FLOWS_EXP','TCP_WIN_MSS_IN','LAST_SWITCHED',
+            'TCP_WIN_MAX_IN','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT',
+           'PROTOCOL','TCP_WIN_MAX_OUT','TCP_FLAGS',
+            'TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS',
+            'DST_TOS','ALERT']
 
 print('Loading Database')
 print('--------------------------------------------------')
@@ -163,27 +169,7 @@ frames = [df0, df1, df2, df3, df4, df5, df7, df8, df9, df10, df11, df12, df13, d
 df = pd.concat(frames,ignore_index=True)
 
 # shuffle the DataFrame rows
-df = df.sample(frac = 1)
-
-# Factorize and extract the labels from the column PROTOCAL MAP
-u, label = pd.factorize(df['PROTOCOL_MAP']) 
-
-#creating instance of one-hot-encoder
-encoder = OneHotEncoder(handle_unknown='ignore')
-
-#perform one-hot encoding on 'PROTOCOL_MAP' column 
-encoder_df = pd.DataFrame(encoder.fit_transform(df[['PROTOCOL_MAP']]).toarray())
-
-#merge one-hot encoded columns back with original DataFrame
-df = df.join(encoder_df)
-# u, label = pd.factorize(test['PROTOCOL_MAP']) 
-
-temp =list(label.values)
-req_cols.remove('PROTOCOL_MAP')
-df.drop('PROTOCOL_MAP', axis=1, inplace=True)
-
-req_cols = req_cols + temp
-df.columns = req_cols
+df = df.sample(frac = 0.5)
 
 # assign alert column to y
 y = df.pop('ALERT')
@@ -409,4 +395,9 @@ shap.summary_plot(shap_values = np.take(shap_obj.values,0,axis=-1),
                   features = test[start_index:end_index],show=False)
 plt.savefig('RF_Shap_Summary_Beeswarms.png')
 plt.clf()
+vals= np.abs(shap_values).mean(1)
 
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)

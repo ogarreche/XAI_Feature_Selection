@@ -206,28 +206,6 @@ df = pd.concat(frames,ignore_index=True)
 # shuffle the DataFrame rows
 df = df.sample(frac = 1)
 
-# Factorize and extract the labels from the column PROTOCAL MAP
-u, label = pd.factorize(df['PROTOCOL_MAP']) 
-
-#creating instance of one-hot-encoder
-encoder = OneHotEncoder(handle_unknown='ignore')
-
-#perform one-hot encoding on 'PROTOCOL_MAP' column 
-encoder_df = pd.DataFrame(encoder.fit_transform(df[['PROTOCOL_MAP']]).toarray())
-
-#merge one-hot encoded columns back with original DataFrame
-df = df.join(encoder_df)
-# u, label = pd.factorize(test['PROTOCOL_MAP']) 
-
-
-temp =list(label.values)
-req_cols.remove('PROTOCOL_MAP')
-df.drop('PROTOCOL_MAP', axis=1, inplace=True)
-
-req_cols = req_cols + temp
-df.columns = req_cols
-
-# assign alert column to y
 y = df.pop('ALERT')
 
 # join alert back to df
@@ -454,4 +432,11 @@ shap.summary_plot(shap_values = shap_values[0],
 
 plt.savefig('DNN_Shap_Summary_Beeswarms.png')
     
+
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)
 #---------------------------------------------------------------------
