@@ -17,7 +17,7 @@ Overall performances for AI models with different feature setups for the RoEduNe
 
 Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Overall%20performances%20for%20AI%20models%20with%20different%20feature%20setups%20for%20the%20CICIDS-2017%20dataset.png?raw=true)
 
 Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.
 
