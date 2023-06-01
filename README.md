@@ -111,7 +111,7 @@ This methods extracts significant intrusion features via selecting the top-𝑘 
 
 Where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚 ∈ M and intrusion 𝑎 ∈ A, respectively. The overall ranking score of a feature 𝑖 (𝑟𝑖) is given by the weighted sum of both the feature rank across all AI models and across all intrusion types. We then chose the 𝑘 features with lowest rank value. Note that the lower 𝑟𝑖, the higher the feature rank.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table7.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table6.png?raw=true)
 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table8.png?raw=true)
 
