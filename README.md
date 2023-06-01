@@ -42,22 +42,40 @@ Comparison of AI performance under top features selected by our framework versus
 ## Performance with different feature selections.
 
 - Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
-- The programs can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021
+- The programs can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021 and end with sulfix acsac.
 - Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_acsac.py in the CICIDS-2017 folder will run the DNN model with the selected features for that given dataset. Inside each program you can find a description of each feature selection method along with its features, the user has to uncomment the one to be used).
-Download that program 'utils.py' and leave it in the folder of the model program.
-Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the accuracy per attack type.
+- Download that program 'utils.py' and leave it in the folder of the model program.
+- Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the accuracy per attack type.
 
 ## Different feature selection methods.
 
 ### SHAP feature selection
 
-Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
-Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_final.py in the CICIDS-2017 folder will run the DNN model with 15 features for that given dataset. On the other hand. DNN_all_final.py will run the DNN model for all features for the given dataset).
-Download that program 'utils.py' and leave it in the folder of the model program.
-Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the Global Summary/Beeswarm Plot.
+- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- The programs can be found inside the folder CICIDS-2017/SHAP or RoEduNet-SIMARGL2021/SHAP and end with sulfix final.
+- Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_final.py in the CICIDS-2017 folder will run the DNN model with 15 features for that given dataset. On the other hand. DNN_all_final.py will run the DNN model for all features for the given dataset).
+- Download that program 'utils.py' and leave it in the folder of the model program.
+- Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the Global Summary/Beeswarm Plot.
+- The most important features are extracted from the Global Summary Plot.
 
 ### Chi-square
 
+- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- The program can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021.
+- Download that program 'utils.py' and leave it in the folder of the model program.
+- The program is standalone program that outputs top features using the Chi-square method.
+
 ### Feature Correlation
 
+- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- The program can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021.
+- Download that program 'utils.py' and leave it in the folder of the model program.
+- The program is standalone program that outputs top features using the Feature Correlation method.
+
 ### Feature Importance
+
+- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- The program can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021.
+- Download that program 'utils.py' and leave it in the folder of the model program.
+- The program is standalone program that outputs top features using the Feature Importance method.
+
