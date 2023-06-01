@@ -94,12 +94,7 @@ This method is the same as the last one but with one difference. It normalizes a
 
 ### Models + Attacks ranking score
 
-This methods extracts significant intrusion features via selecting the top-𝑘 ranked features across all different AI models and all different intrusion types. Suppose the set of AI intrusion detection models is denoted by M in which each entry 𝑚 ∈ M represents one black-box AI model and that the set of intrusion types be given by A in which 𝑎 ∈ A represents one intrusion class. We calculate the overall ranking score of each feature (given by 𝑟𝑖) as follows
-
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/fff1bbb6-a561-4b98-ab2e-a9b984975785)
-
-
-, where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚 ∈ M and intrusion 𝑎 ∈ A, respectively. The overall ranking score of a feature 𝑖 (𝑟𝑖) is given by the weighted sum of both the feature rank across all AI models and across all intrusion types. We then chose the 𝑘 features with lowest rank value. Note that the lower 𝑟𝑖, the higher the feature rank.
+This methods extracts significant intrusion features via selecting the top-𝑘 ranked features across all different AI models and all different intrusion types. Suppose the set of AI intrusion detection models is denoted by M in which each entry 𝑚 ∈ M represents one black-box AI model and that the set of intrusion types be given by A in which 𝑎 ∈ A represents one intrusion class. We calculate the overall ranking score of each feature (given by 𝑟𝑖) as follows ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/fff1bbb6-a561-4b98-ab2e-a9b984975785), where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚 ∈ M and intrusion 𝑎 ∈ A, respectively. The overall ranking score of a feature 𝑖 (𝑟𝑖) is given by the weighted sum of both the feature rank across all AI models and across all intrusion types. We then chose the 𝑘 features with lowest rank value. Note that the lower 𝑟𝑖, the higher the feature rank.
 
 ### Combined selection (Takes in consideration the seven methods used before)
 
