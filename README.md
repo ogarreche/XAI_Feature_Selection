@@ -79,7 +79,7 @@ Comparison of AI performance under top features selected by our framework versus
 - Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the Global Summary/Beeswarm Plot.
 - The most important features are extracted and shown in a list.
 
-### From here below Excel was used to compute feature selection
+### Note: From here below Excel was used to compute feature selection
 ### Common features by overall rank
 
 This method each feature rank for the models to create only one overall feature rank for all models. This is achieved by calculating the average rank of each individual feature across all AI models.
@@ -102,6 +102,8 @@ This methods extracts significant intrusion features via selecting the top-𝑘 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/fff1bbb6-a561-4b98-ab2e-a9b984975785)
 
 Where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚 ∈ M and intrusion 𝑎 ∈ A, respectively. The overall ranking score of a feature 𝑖 (𝑟𝑖) is given by the weighted sum of both the feature rank across all AI models and across all intrusion types. We then chose the 𝑘 features with lowest rank value. Note that the lower 𝑟𝑖, the higher the feature rank.
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/7ccc1944-3896-444c-9785-84d787e19dcf)
 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/4267a802-1344-487d-b4ce-a655f16674ca)
 
