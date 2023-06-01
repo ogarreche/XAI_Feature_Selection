@@ -21,7 +21,7 @@ Overall performances for AI models with different feature setups for the CICIDS-
 
 Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/[Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.png](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Accuracy%20per%20attack%20type%20(normal%2C%20DoS%2C%20and%20Port%20Scan)%20for%20the%20RoEduNet-SIMARGL2021%20dataset.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Accuracy%20per%20attack%20type%20(normal%2C%20DoS%2C%20and%20Port%20Scan)%20for%20the%20RoEduNet-SIMARGL2021%20dataset.png?raw=true)
 
 Accuracy per attack type (normal, DoS, Brute Force, Web attack, Infiltration, Bot, and Port Scan) for the CICIDS-2017 dataset with all features.
 
