@@ -89,7 +89,7 @@ This method each feature rank for the models to create only one overall feature 
 This method builds upon the previous one. However, the difference is that it takes into consideration the SHAP values for each feature and the accuracy for each AI model, instead of the sequential numeration.
 The importance of feature is calculated by the sum of the product of SHAP value and accuracy of that AI model for that feature. Then, the features are ranked according to average of that sum.
 
-
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/dec84f88-7d31-4c02-83b1-7f1d05e3394f)
 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/3863f8c2-5386-47db-9a14-10a089ff2b22)
 
