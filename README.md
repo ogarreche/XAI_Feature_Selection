@@ -34,7 +34,7 @@ Quantification of enhancements of AI models in detecting attacks (given by numbe
 
 Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Comparison%20of%20AI%20performance%20under%20top%20features%20selected%20by%20our%20framework%20versus%20those%20by%20information%20gain%20and%20K-best.%20Our%20framework%20has%20superior%20performance%20(bold%20text)%20in%2022%20of%2028%20AI%20models%20for%20the%20two%20datasets.png?raw=true)
 
 
 
