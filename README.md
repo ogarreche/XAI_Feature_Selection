@@ -84,50 +84,47 @@ Comparison of AI performance under top features selected by our framework versus
 
 This method each feature rank for the models to create only one overall feature rank for all models. This is achieved by calculating the average rank of each individual feature across all AI models.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/2641e629-8233-444f-836d-fe90b3e2e6f2)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table1.png?raw=true)
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/57a8ba69-1536-4b20-8e04-660b2f85ee5f)
-
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table2.png?raw=true)
 
 ### Common features by overall weighted rank
 
 This method builds upon the previous one. However, the difference is that it takes into consideration the SHAP values for each feature and the accuracy for each AI model, instead of the sequential numeration.
 The importance of feature is calculated by the sum of the product of SHAP value and accuracy of that AI model for that feature. Then, the features are ranked according to average of that sum.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/dec84f88-7d31-4c02-83b1-7f1d05e3394f)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table3.png?raw=true)
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/3863f8c2-5386-47db-9a14-10a089ff2b22)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table4.png?raw=true)
 
 ### Common features by overall normalized weighted rank
 
 This method is the same as the last one but with one difference. It normalizes all the SHAP values. During the experiments it was noted that some models such as LightGBM results in SHAP values with values that are much bigger others ones. Therefore, the normalization step was added to avoid such bias.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/c2449822-9027-400e-9af0-0ddab9379296)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table5.png?raw=true)
 
 ### Models + Attacks ranking score
 
 This methods extracts significant intrusion features via selecting the top-𝑘 ranked features across all different AI models and all different intrusion types. Suppose the set of AI intrusion detection models is denoted by M in which each entry 𝑚 ∈ M represents one black-box AI model and that the set of intrusion types be given by A in which 𝑎 ∈ A represents one intrusion class. We calculate the overall ranking score of each feature (given by 𝑟𝑖) as follows:
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/fff1bbb6-a561-4b98-ab2e-a9b984975785)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/form6.png?raw=true)
 
 Where 𝑟𝑖𝑚 and 𝑟𝑖𝑎 are the ranks of feature 𝑖 for model 𝑚 ∈ M and intrusion 𝑎 ∈ A, respectively. The overall ranking score of a feature 𝑖 (𝑟𝑖) is given by the weighted sum of both the feature rank across all AI models and across all intrusion types. We then chose the 𝑘 features with lowest rank value. Note that the lower 𝑟𝑖, the higher the feature rank.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/7ccc1944-3896-444c-9785-84d787e19dcf)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table7.png?raw=true)
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/4267a802-1344-487d-b4ce-a655f16674ca)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table8.png?raw=true)
 
 ### Combined selection (Takes in consideration the seven methods used before)
 
 In this method, we give a weight to each feature that depends on the frequency of appearance of this feature among top-𝑘 features in all proposed feature selection methods. In other words, the selection of feature here depends on its combined importance among all other proposed methods. We next show well known feature selection methods that are used in this work as baselines to our proposed methods. For these
 methods, most of them do no need to train models beforehand.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/2cf2d21f-1bd9-4994-bae8-60374d50a59e)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table9.png?raw=true)
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/2bdbb356-470f-4758-8be5-84d1e294c1f7)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table10.png?raw=true)
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/e9d6990b-7f9d-4a18-ad6e-5e1651ea7477)
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table11.png?raw=true)
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/b7c78cbe-0f38-42e8-a3c6-f27caac46531)
-
-
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table12.png?raw=true)
 
