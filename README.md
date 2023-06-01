@@ -84,6 +84,11 @@ Comparison of AI performance under top features selected by our framework versus
 
 This method each feature rank for the models to create only one overall feature rank for all models. This is achieved by calculating the average rank of each individual feature across all AI models.
 
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/2641e629-8233-444f-836d-fe90b3e2e6f2)
+
+![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/assets/55901425/57a8ba69-1536-4b20-8e04-660b2f85ee5f)
+
+
 ### Common features by overall weighted rank
 
 This method builds upon the previous one. However, the difference is that it takes into consideration the SHAP values for each feature and the accuracy for each AI model, instead of the sequential numeration.
