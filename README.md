@@ -77,7 +77,7 @@ Comparison of AI performance under top features selected by our framework versus
 - Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_final.py in the CICIDS-2017 folder will run the DNN model with 15 features for that given dataset. On the other hand. DNN_all_final.py will run the DNN model for all features for the given dataset).
 - Download that program 'utils.py' and leave it in the folder of the model program.
 - Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the Global Summary/Beeswarm Plot.
-- The most important features are extracted from the Global Summary Plot.
+- The most important features are extracted and shown in a list.
 
 ### Common features by overall rank
 
