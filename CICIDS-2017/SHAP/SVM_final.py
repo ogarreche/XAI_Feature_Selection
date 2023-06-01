@@ -300,6 +300,17 @@ shap.summary_plot(shap_values = shap_values,
 plt.savefig('SVM_Shap_Summary_global.png')
 plt.clf()
 
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)
+
+
+
+
+
 shap.summary_plot(shap_values = shap_values[0],
                  features = test[start_index:end_index],
                  show=False)

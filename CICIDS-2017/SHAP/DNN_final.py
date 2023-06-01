@@ -93,11 +93,14 @@ print('Defining features of interest')
 print('---------------------------------------------------------------------------------')
 print('')
 
-req_cols = [ ' Packet Length Std', ' Total Length of Bwd Packets', ' Subflow Bwd Bytes',
-' Destination Port', ' Packet Length Variance', ' Bwd Packet Length Mean',' Avg Bwd Segment Size',
-'Bwd Packet Length Max', ' Init_Win_bytes_backward','Total Length of Fwd Packets',
-' Subflow Fwd Bytes', 'Init_Win_bytes_forward', ' Average Packet Size', ' Packet Length Mean',
-' Max Packet Length',' Label']
+req_cols = [ ' Average Packet Size',' Init_Win_bytes_backward','Init_Win_bytes_forward','Total Length of Fwd Packets','Bwd Packet Length Max',' Label']
+
+
+#req_cols = [ ' Packet Length Std', ' Total Length of Bwd Packets', ' Subflow Bwd Bytes',
+#' Destination Port', ' Packet Length Variance', ' Bwd Packet Length Mean',' Avg Bwd Segment Size',
+#'Bwd Packet Length Max', ' Init_Win_bytes_backward','Total Length of Fwd Packets',
+#' Subflow Fwd Bytes', 'Init_Win_bytes_forward', ' Average Packet Size', ' Packet Length Mean',
+#' Max Packet Length',' Label']
 #---------------------------------------------------------------------
 #Load Databases from csv file
 print('---------------------------------------------------------------------------------')
@@ -322,7 +325,7 @@ print('-------------------------------------------------------------------------
 start_index = 0
 
 #end_index = len(test)
-end_index = 500
+end_index = 100
 test = test[features]
 explainer = shap.DeepExplainer(model,test[start_index:end_index].values.astype('float'))
 shap_values = explainer.shap_values(test[start_index:end_index].values.astype('float'))
@@ -340,3 +343,11 @@ shap.summary_plot(shap_values = shap_values[0],
 
 plt.savefig('DNN_Shap_Summary_Beeswarms.png')
 plt.clf()
+
+
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)

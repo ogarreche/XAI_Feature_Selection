@@ -369,4 +369,9 @@ plt.clf()
 
 
 
-#-------------------------------------------------------------------
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)#-------------------------------------------------------------------

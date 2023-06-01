@@ -272,7 +272,7 @@ test.pop('Label')
 test.pop('is_train')
 
 start_index = 0
-end_index = 500
+end_index = 100
 
 explainer = shap.KernelExplainer(knn_clf.predict_proba, test[start_index:end_index])
 shap_values = explainer.shap_values(test[start_index:end_index])
@@ -286,4 +286,10 @@ plt.clf()
 shap.summary_plot(shap_values = shap_values[0],features = test[start_index:end_index],show=False)
 plt.savefig('KNN_Shap_Summary_Beeswarms_cicids.png')
 plt.clf()
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)
 #-----------------------------------------------------------------

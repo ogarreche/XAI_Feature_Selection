@@ -113,6 +113,11 @@ print('Defining features of interest')
 print('---------------------------------------------------------------------------------')
 print('')
 
+req_cols = [ ' Average Packet Size',' Init_Win_bytes_backward','Init_Win_bytes_forward','Total Length of Fwd Packets','Bwd Packet Length Max',' Label']
+
+req_cols = [ ' Average Packet Size', ' Init_Win_bytes_backward', 'Init_Win_bytes_forward', 'Total Length of Fwd Packets', 'Bwd Packet Length Max', ' Label'] 
+
+
 req_cols = [ ' Packet Length Std', ' Total Length of Bwd Packets', ' Subflow Bwd Bytes',
 ' Destination Port', ' Packet Length Variance', ' Bwd Packet Length Mean',' Avg Bwd Segment Size',
 'Bwd Packet Length Max', ' Init_Win_bytes_backward','Total Length of Fwd Packets',
@@ -199,7 +204,7 @@ print('')
 df['is_train'] = np.random.uniform(0, 1, len(df)) <= .70
 
 train, test = df[df['is_train']==True], df[df['is_train']==False]
-features = df.columns[:15]
+features = df.columns[:len(req_cols)-1]
 
 y_train, label = pd.factorize(train['Label'])
 y_test, label = pd.factorize(test['Label'])
@@ -315,6 +320,15 @@ shap.summary_plot(shap_values = shap_values,
                  class_names=[label[0],label[1],label[2],label[3],label[4],label[5],label[6]],show=False)
 plt.savefig('RF_Shap_Summary_global_cicids.png')
 plt.clf()
+
+
+vals= np.abs(shap_values).mean(1)
+
+feature_importance = pd.DataFrame(list(zip(train.columns, sum(vals))), columns=['col_name','feature_importance_vals'])
+feature_importance.sort_values(by=['feature_importance_vals'], ascending=False,inplace=True)
+feature_importance.head()
+print(feature_importance)
+
 # ## Summary Dot Plot (Global)
 shap.summary_plot(shap_values = np.take(shap_obj.values,0,axis=-1),
                   features = test[start_index:end_index],show=False)
