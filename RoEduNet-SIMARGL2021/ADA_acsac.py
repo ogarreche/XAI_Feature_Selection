@@ -34,7 +34,6 @@ from imblearn.over_sampling import RandomOverSampler
 all features
 '''
 
-'''
 req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
             'TOTAL_FLOWS_EXP','TCP_WIN_MSS_IN','LAST_SWITCHED',
             'TCP_WIN_MAX_IN','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT',
@@ -45,7 +44,6 @@ req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
            'TOTAL_BYTES_EXP','IN_BYTES','IN_PKTS','OUT_BYTES','OUT_PKTS',
             'ALERT']
 
-'''
 
 
 '''
@@ -58,9 +56,9 @@ req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
 
 '''
 req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','ALERT' ]
+
+
 '''
-
-
 '''
 ##################################### For K = 10 ################################################
 '''
@@ -221,9 +219,11 @@ req_cols =  [ 'TCP_WIN_SCALE_IN', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MSS_IN'
 '''
 
 
+'''
 req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'FLOW_DURATION_MILLISECONDS','ALERT']
 
 
+'''
 
 
             
@@ -431,9 +431,11 @@ print('ELAPSE TIME PREDICTION: ',(end - start)/60, 'min')
 #----------------------------------------------------------------------------------------------------------
 
 y_test, label2 = pd.factorize(test['ALERT'])
+pred_label, label3 = pd.factorize(y_pred)
 
 #print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-pred_label = y_test
+
+#pred_label = y_pred
 
 #----------------------------------------------------------------------------------------------------------
 # Confusion Matrix
