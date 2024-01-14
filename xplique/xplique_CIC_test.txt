@@ -1,0 +1,262 @@
+---------------------------------------------------------------------------------
+CICIDS - XPLIQUE
+Saliency
+19         Subflow Fwd Packets            2.0052380561828613 
+1          Total Length of Fwd Packets    1.7867485284805298 
+20          Subflow Fwd Bytes             1.6765586137771606 
+2           Total Length of Bwd Packets   1.5412065982818604 
+21          Subflow Bwd Bytes             1.4341676235198975 
+0           Destination Port              1.0580283403396606 
+12          Packet Length Variance        0.6699227690696716 
+23          Init_Win_bytes_backward       0.6517496705055237 
+15          Down/Up Ratio                 0.57880038022995 
+8           Bwd Packets/s                 0.5776602625846863 
+22         Init_Win_bytes_forward         0.4874625504016876 
+11          Packet Length Std             0.3942960798740387 
+14          URG Flag Count                0.3379211127758026 
+3          Bwd Packet Length Max          0.2147866189479828 
+17          Avg Bwd Segment Size          0.17057211697101593 
+9           Max Packet Length             0.12122730165719986 
+4           Bwd Packet Length Mean        0.10956573486328125 
+6           Flow IAT Std                  0.09945444762706757 
+7           Fwd URG Flags                 0.07260458916425705 
+10          Packet Length Mean            0.07211598008871078 
+5           Flow Packets/s                0.06042059510946274 
+13         FIN Flag Count                 0.03740868717432022 
+18         Bwd Avg Bulk Rate              0.03369181603193283 
+16          Average Packet Size           0.012755168601870537 
+
+Integrated Gradients
+11          Packet Length Std             0.22559300065040588 
+12          Packet Length Variance        0.21163389086723328 
+3          Bwd Packet Length Max          0.12947453558444977 
+17          Avg Bwd Segment Size          0.10823719203472137 
+4           Bwd Packet Length Mean        0.06950963288545609 
+9           Max Packet Length             0.03838087245821953 
+10          Packet Length Mean            0.030925875529646873 
+22         Init_Win_bytes_forward         -0.027196964249014854 
+6           Flow IAT Std                  0.024872109293937683 
+15          Down/Up Ratio                 -0.015190092846751213 
+13         FIN Flag Count                 0.010217465460300446 
+16          Average Packet Size           0.005830527748912573 
+23          Init_Win_bytes_backward       -0.0027072736993432045 
+0           Destination Port              -0.0015160272596403956 
+1          Total Length of Fwd Packets    -0.0006172703579068184 
+20          Subflow Fwd Bytes             -0.0005794387543573976 
+19         Subflow Fwd Packets            -7.426618685713038e-05 
+2           Total Length of Bwd Packets   -3.792126153712161e-05 
+21          Subflow Bwd Bytes             -3.5293949622428045e-05 
+8           Bwd Packets/s                 -3.993414338765433e-06 
+5           Flow Packets/s                0.0 
+7           Fwd URG Flags                 0.0 
+14          URG Flag Count                0.0 
+18         Bwd Avg Bulk Rate              0.0 
+
+Lime
+12          Packet Length Variance        0.15527084469795227 
+11          Packet Length Std             0.1522921919822693 
+3          Bwd Packet Length Max          0.09229004383087158 
+17          Avg Bwd Segment Size          0.07235357165336609 
+4           Bwd Packet Length Mean        0.04859672486782074 
+9           Max Packet Length             0.027484310790896416 
+22         Init_Win_bytes_forward         -0.020645638927817345 
+10          Packet Length Mean            0.020558346062898636 
+6           Flow IAT Std                  0.016596466302871704 
+15          Down/Up Ratio                 -0.011028101667761803 
+13         FIN Flag Count                 0.006331598851829767 
+0           Destination Port              -0.003946419805288315 
+16          Average Packet Size           0.003326686564832926 
+23          Init_Win_bytes_backward       -0.0017338317120447755 
+1          Total Length of Fwd Packets    -0.001258954405784607 
+20          Subflow Fwd Bytes             -0.0011275915894657373 
+2           Total Length of Bwd Packets   -0.0005237450241111219 
+5           Flow Packets/s                0.0005112912622280419 
+14          URG Flag Count                -0.00047921898658387363 
+21          Subflow Bwd Bytes             0.0003744227869901806 
+8           Bwd Packets/s                 0.00034694321220740676 
+7           Fwd URG Flags                 -0.00032856714096851647 
+19         Subflow Fwd Packets            0.00031634478364139795 
+18         Bwd Avg Bulk Rate              0.00026859817444346845 
+
+Occlusion
+11          Packet Length Std             0.3402453362941742 
+12          Packet Length Variance        0.2108732908964157 
+3          Bwd Packet Length Max          0.17477837204933167 
+17          Avg Bwd Segment Size          0.16283488273620605 
+4           Bwd Packet Length Mean        0.10699326545000076 
+22         Init_Win_bytes_forward         -0.05333369970321655 
+6           Flow IAT Std                  0.04139461740851402 
+9           Max Packet Length             0.0325004868209362 
+10          Packet Length Mean            0.03154702112078667 
+15          Down/Up Ratio                 -0.01639479212462902 
+13         FIN Flag Count                 0.013118947856128216 
+0           Destination Port              -0.009272797964513302 
+16          Average Packet Size           0.004830381833016872 
+23          Init_Win_bytes_backward       -0.0025977345649152994 
+1          Total Length of Fwd Packets    -0.0009633327135816216 
+20          Subflow Fwd Bytes             -0.0009104040800593793 
+19         Subflow Fwd Packets            -6.600693450309336e-05 
+2           Total Length of Bwd Packets   -3.1094787118490785e-05 
+21          Subflow Bwd Bytes             -2.9036871637799777e-05 
+8           Bwd Packets/s                 -2.055000095424475e-06 
+5           Flow Packets/s                0.0 
+7           Fwd URG Flags                 0.0 
+14          URG Flag Count                0.0 
+18         Bwd Avg Bulk Rate              0.0 
+
+SmoothGrad
+1          Total Length of Fwd Packets    -4.65994930267334 
+20          Subflow Fwd Bytes             -4.57667875289917 
+19         Subflow Fwd Packets            -4.558753967285156 
+0           Destination Port              -3.4558403491973877 
+2           Total Length of Bwd Packets   -3.327359914779663 
+21          Subflow Bwd Bytes             -3.0459396839141846 
+15          Down/Up Ratio                 -2.098060131072998 
+8           Bwd Packets/s                 -2.026416778564453 
+23          Init_Win_bytes_backward       -2.005852222442627 
+12          Packet Length Variance        1.9271962642669678 
+11          Packet Length Std             1.1275502443313599 
+22         Init_Win_bytes_forward         -1.0392080545425415 
+14          URG Flag Count                -0.987074077129364 
+3          Bwd Packet Length Max          0.8504382371902466 
+17          Avg Bwd Segment Size          0.7271728515625 
+9           Max Packet Length             0.6242956519126892 
+4           Bwd Packet Length Mean        0.5109188556671143 
+10          Packet Length Mean            0.3875502943992615 
+16          Average Packet Size           0.301425039768219 
+13         FIN Flag Count                 0.27874070405960083 
+6           Flow IAT Std                  0.19989058375358582 
+7           Fwd URG Flags                 0.17546334862709045 
+5           Flow Packets/s                0.08555284887552261 
+18         Bwd Avg Bulk Rate              0.03218310698866844 
+
+VarGrad
+19         Subflow Fwd Packets            33684.328125 
+1          Total Length of Fwd Packets    33283.3125 
+20          Subflow Fwd Bytes             31913.33203125 
+0           Destination Port              19770.0703125 
+2           Total Length of Bwd Packets   18576.103515625 
+21          Subflow Bwd Bytes             15717.8505859375 
+15          Down/Up Ratio                 7633.92236328125 
+8           Bwd Packets/s                 7175.28271484375 
+23          Init_Win_bytes_backward       6047.3720703125 
+12          Packet Length Variance        5936.5615234375 
+11          Packet Length Std             1967.4423828125 
+22         Init_Win_bytes_forward         1823.9217529296875 
+14          URG Flag Count                1504.87744140625 
+3          Bwd Packet Length Max          1158.4404296875 
+17          Avg Bwd Segment Size          918.5034790039062 
+9           Max Packet Length             709.4832763671875 
+4           Bwd Packet Length Mean        425.2983703613281 
+10          Packet Length Mean            271.5079650878906 
+13         FIN Flag Count                 242.95396423339844 
+16          Average Packet Size           224.9134063720703 
+6           Flow IAT Std                  90.8297119140625 
+7           Fwd URG Flags                 53.05204772949219 
+18         Bwd Avg Bulk Rate              27.472728729248047 
+5           Flow Packets/s                27.424434661865234 
+
+SquareGrad
+19         Subflow Fwd Packets            36309.79296875 
+1          Total Length of Fwd Packets    35399.6640625 
+20          Subflow Fwd Bytes             33794.53515625 
+2           Total Length of Bwd Packets   20084.607421875 
+0           Destination Port              20065.578125 
+21          Subflow Bwd Bytes             17046.119140625 
+15          Down/Up Ratio                 7665.20361328125 
+8           Bwd Packets/s                 7213.0712890625 
+23          Init_Win_bytes_backward       6336.03564453125 
+12          Packet Length Variance        6108.64453125 
+11          Packet Length Std             2045.0845947265625 
+22         Init_Win_bytes_forward         1998.5255126953125 
+14          URG Flag Count                1562.30908203125 
+3          Bwd Packet Length Max          1181.1031494140625 
+17          Avg Bwd Segment Size          916.9974975585938 
+9           Max Packet Length             701.5888061523438 
+4           Bwd Packet Length Mean        437.5287170410156 
+10          Packet Length Mean            269.39520263671875 
+13         FIN Flag Count                 233.77029418945312 
+16          Average Packet Size           220.6757354736328 
+6           Flow IAT Std                  94.29031372070312 
+7           Fwd URG Flags                 56.85535430908203 
+5           Flow Packets/s                31.690170288085938 
+18         Bwd Avg Bulk Rate              27.69266128540039 
+
+GuidedBackprop
+0           Destination Port              0.0 
+1          Total Length of Fwd Packets    0.0 
+2           Total Length of Bwd Packets   0.0 
+3          Bwd Packet Length Max          0.0 
+4           Bwd Packet Length Mean        0.0 
+5           Flow Packets/s                0.0 
+6           Flow IAT Std                  0.0 
+7           Fwd URG Flags                 0.0 
+8           Bwd Packets/s                 0.0 
+9           Max Packet Length             0.0 
+10          Packet Length Mean            0.0 
+11          Packet Length Std             0.0 
+12          Packet Length Variance        0.0 
+13         FIN Flag Count                 0.0 
+14          URG Flag Count                0.0 
+15          Down/Up Ratio                 0.0 
+16          Average Packet Size           0.0 
+17          Avg Bwd Segment Size          0.0 
+18         Bwd Avg Bulk Rate              0.0 
+19         Subflow Fwd Packets            0.0 
+20          Subflow Fwd Bytes             0.0 
+21          Subflow Bwd Bytes             0.0 
+22         Init_Win_bytes_forward         0.0 
+23          Init_Win_bytes_backward       0.0 
+
+DeconvNet
+19         Subflow Fwd Packets            0.00028168907738290727 
+1          Total Length of Fwd Packets    0.00023184987367130816 
+2           Total Length of Bwd Packets   0.00023074538330547512 
+21          Subflow Bwd Bytes             0.0002164123288821429 
+20          Subflow Fwd Bytes             0.00019280804554000497 
+12          Packet Length Variance        -9.226421389030293e-05 
+23          Init_Win_bytes_backward       8.385253750020638e-05 
+0           Destination Port              8.319641347043216e-05 
+22         Init_Win_bytes_forward         5.849615263286978e-05 
+11          Packet Length Std             -5.765151945524849e-05 
+14          URG Flag Count                4.583653571899049e-05 
+15          Down/Up Ratio                 2.413759102637414e-05 
+6           Flow IAT Std                  -2.2494312361232005e-05 
+4           Bwd Packet Length Mean        -2.137574483640492e-05 
+8           Bwd Packets/s                 1.968725337064825e-05 
+3          Bwd Packet Length Max          -1.731996235321276e-05 
+9           Max Packet Length             -1.5069754226715304e-05 
+17          Avg Bwd Segment Size          -1.1738408829842228e-05 
+18         Bwd Avg Bulk Rate              1.0870205187529791e-05 
+5           Flow Packets/s                -1.0696781828301027e-05 
+10          Packet Length Mean            -1.044469445332652e-05 
+16          Average Packet Size           -8.604205504525453e-06 
+13         FIN Flag Count                 3.6502499369817087e-06 
+7           Fwd URG Flags                 -8.00854706994869e-07 
+
+GradientInput
+11          Packet Length Std             0.13480110466480255 
+12          Packet Length Variance        0.08050446212291718 
+3          Bwd Packet Length Max          0.07576774805784225 
+17          Avg Bwd Segment Size          0.07420776784420013 
+4           Bwd Packet Length Mean        0.047661878168582916 
+6           Flow IAT Std                  0.028089255094528198 
+22         Init_Win_bytes_forward         -0.026664569973945618 
+9           Max Packet Length             0.022484011948108673 
+10          Packet Length Mean            0.022267404943704605 
+15          Down/Up Ratio                 -0.01394244097173214 
+13         FIN Flag Count                 0.0073084537871181965 
+16          Average Packet Size           0.004085217602550983 
+23          Init_Win_bytes_backward       -0.002337089041247964 
+0           Destination Port              -0.0012915978441014886 
+1          Total Length of Fwd Packets    -0.0008927652961574495 
+20          Subflow Fwd Bytes             -0.0008377578924410045 
+19         Subflow Fwd Packets            -7.243434811243787e-05 
+2           Total Length of Bwd Packets   -3.2201558497035876e-05 
+21          Subflow Bwd Bytes             -2.9972463380545378e-05 
+8           Bwd Packets/s                 -2.0469708488235483e-06 
+5           Flow Packets/s                0.0 
+7           Fwd URG Flags                 0.0 
+14          URG Flag Count                0.0 
+18         Bwd Avg Bulk Rate              0.0 
+
