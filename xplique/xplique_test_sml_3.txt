@@ -1,0 +1,202 @@
+---------------------------------------------------------------------------------
+SML - XPLIQUE
+Saliency
+12         TCP_WIN_SCALE_IN               96.61096954345703 
+16         L4_SRC_PORT                    88.46739196777344 
+15         FLOW_ID                        87.10118103027344 
+7          TCP_WIN_MIN_OUT                27.98051643371582 
+6          TCP_WIN_MIN_IN                 26.850950241088867 
+11         TCP_WIN_SCALE_OUT              20.84854507446289 
+9          TCP_WIN_MAX_OUT                18.66139793395996 
+2          TOTAL_FLOWS_EXP                11.691279411315918 
+8          PROTOCOL                       8.31657600402832 
+10         TCP_FLAGS                      6.403136253356934 
+3          TCP_WIN_MSS_IN                 5.281381607055664 
+13         SRC_TOS                        4.460517406463623 
+1          FIRST_SWITCHED                 3.9063966274261475 
+14         DST_TOS                        3.1527063846588135 
+5          TCP_WIN_MAX_IN                 2.7498040199279785 
+4          LAST_SWITCHED                  2.5312464237213135 
+17         L4_DST_PORT                    1.8639180660247803 
+0          FLOW_DURATION_MILLISECONDS     1.4764021635055542 
+
+Integrated Gradients
+12         TCP_WIN_SCALE_IN               -7.454779624938965 
+3          TCP_WIN_MSS_IN                 -5.281310558319092 
+6          TCP_WIN_MIN_IN                 4.291642189025879 
+16         L4_SRC_PORT                    3.19498348236084 
+15         FLOW_ID                        2.799304485321045 
+5          TCP_WIN_MAX_IN                 -2.749767780303955 
+8          PROTOCOL                       -2.743077278137207 
+1          FIRST_SWITCHED                 -2.657046318054199 
+10         TCP_FLAGS                      -2.106353998184204 
+11         TCP_WIN_SCALE_OUT              2.0073509216308594 
+9          TCP_WIN_MAX_OUT                1.8034075498580933 
+17         L4_DST_PORT                    -1.7670435905456543 
+2          TOTAL_FLOWS_EXP                1.4412246942520142 
+0          FLOW_DURATION_MILLISECONDS     -1.4001712799072266 
+7          TCP_WIN_MIN_OUT                -1.1708929538726807 
+13         SRC_TOS                        0.7337962985038757 
+14         DST_TOS                        0.17726747691631317 
+4          LAST_SWITCHED                  0.10889994353055954 
+
+Lime
+12         TCP_WIN_SCALE_IN               -7.00418758392334 
+3          TCP_WIN_MSS_IN                 -4.965298175811768 
+6          TCP_WIN_MIN_IN                 4.030621528625488 
+16         L4_SRC_PORT                    3.00292706489563 
+15         FLOW_ID                        2.631293773651123 
+5          TCP_WIN_MAX_IN                 -2.583437919616699 
+8          PROTOCOL                       -2.578315496444702 
+1          FIRST_SWITCHED                 -2.4975335597991943 
+10         TCP_FLAGS                      -1.979206919670105 
+11         TCP_WIN_SCALE_OUT              1.8865004777908325 
+9          TCP_WIN_MAX_OUT                1.6950798034667969 
+17         L4_DST_PORT                    -1.6609365940093994 
+2          TOTAL_FLOWS_EXP                1.354767918586731 
+0          FLOW_DURATION_MILLISECONDS     -1.3159704208374023 
+7          TCP_WIN_MIN_OUT                -1.100656509399414 
+13         SRC_TOS                        0.6896561980247498 
+14         DST_TOS                        0.16677547991275787 
+4          LAST_SWITCHED                  0.10305146127939224 
+
+Occlusion
+12         TCP_WIN_SCALE_IN               -7.454779624938965 
+3          TCP_WIN_MSS_IN                 -5.281310558319092 
+6          TCP_WIN_MIN_IN                 4.2916436195373535 
+16         L4_SRC_PORT                    3.19498348236084 
+15         FLOW_ID                        2.799304485321045 
+5          TCP_WIN_MAX_IN                 -2.749767541885376 
+8          PROTOCOL                       -2.7430763244628906 
+1          FIRST_SWITCHED                 -2.6570467948913574 
+10         TCP_FLAGS                      -2.106353998184204 
+11         TCP_WIN_SCALE_OUT              2.0073509216308594 
+9          TCP_WIN_MAX_OUT                1.8034075498580933 
+17         L4_DST_PORT                    -1.7670432329177856 
+2          TOTAL_FLOWS_EXP                1.441224217414856 
+0          FLOW_DURATION_MILLISECONDS     -1.4001713991165161 
+7          TCP_WIN_MIN_OUT                -1.1708940267562866 
+13         SRC_TOS                        0.7337960600852966 
+14         DST_TOS                        0.17726747691631317 
+4          LAST_SWITCHED                  0.1089005097746849 
+
+SmoothGrad
+12         TCP_WIN_SCALE_IN               -96.61096954345703 
+16         L4_SRC_PORT                    88.46739196777344 
+15         FLOW_ID                        87.10118103027344 
+7          TCP_WIN_MIN_OUT                -27.98051643371582 
+6          TCP_WIN_MIN_IN                 26.850950241088867 
+11         TCP_WIN_SCALE_OUT              20.84854507446289 
+9          TCP_WIN_MAX_OUT                18.66139793395996 
+2          TOTAL_FLOWS_EXP                11.691279411315918 
+8          PROTOCOL                       -8.31657600402832 
+10         TCP_FLAGS                      -6.403136253356934 
+3          TCP_WIN_MSS_IN                 -5.281381607055664 
+13         SRC_TOS                        4.460517406463623 
+1          FIRST_SWITCHED                 -3.9063966274261475 
+14         DST_TOS                        3.1527063846588135 
+5          TCP_WIN_MAX_IN                 -2.7498040199279785 
+4          LAST_SWITCHED                  2.5312464237213135 
+17         L4_DST_PORT                    -1.8639180660247803 
+0          FLOW_DURATION_MILLISECONDS     -1.4764021635055542 
+
+VarGrad
+12         TCP_WIN_SCALE_IN               -0.004980855621397495 
+15         FLOW_ID                        0.00199382402934134 
+16         L4_SRC_PORT                    -0.00099691201467067 
+6          TCP_WIN_MIN_IN                 0.0003738178638741374 
+11         TCP_WIN_SCALE_OUT              0.00021802555420435965 
+7          TCP_WIN_MIN_OUT                0.0001869089319370687 
+9          TCP_WIN_MAX_OUT                6.230700091691688e-05 
+8          PROTOCOL                       -2.3363616492133588e-05 
+3          TCP_WIN_MSS_IN                 1.1681808246066794e-05 
+10         TCP_FLAGS                      -1.1681808246066794e-05 
+1          FIRST_SWITCHED                 2.9204520615166984e-06 
+13         SRC_TOS                        1.9470937786536524e-06 
+17         L4_DST_PORT                    -7.301130153791746e-07 
+0          FLOW_DURATION_MILLISECONDS     -4.867734446634131e-07 
+2          TOTAL_FLOWS_EXP                0.0 
+4          LAST_SWITCHED                  0.0 
+5          TCP_WIN_MAX_IN                 0.0 
+14         DST_TOS                        0.0 
+
+SquareGrad
+12         TCP_WIN_SCALE_IN               9342.9697265625 
+16         L4_SRC_PORT                    7808.357421875 
+15         FLOW_ID                        7596.015625 
+7          TCP_WIN_MIN_OUT                783.064208984375 
+6          TCP_WIN_MIN_IN                 720.2054443359375 
+11         TCP_WIN_SCALE_OUT              434.3753356933594 
+9          TCP_WIN_MAX_OUT                348.43060302734375 
+2          TOTAL_FLOWS_EXP                136.9362335205078 
+8          PROTOCOL                       69.16642761230469 
+10         TCP_FLAGS                      41.00418472290039 
+3          TCP_WIN_MSS_IN                 27.916044235229492 
+13         SRC_TOS                        19.874465942382812 
+1          FIRST_SWITCHED                 15.259431838989258 
+14         DST_TOS                        9.9229097366333 
+5          TCP_WIN_MAX_IN                 7.561092376708984 
+4          LAST_SWITCHED                  6.409280776977539 
+17         L4_DST_PORT                    3.4695510864257812 
+0          FLOW_DURATION_MILLISECONDS     2.182377576828003 
+
+GuidedBackprop
+12         TCP_WIN_SCALE_IN               -96.61096954345703 
+16         L4_SRC_PORT                    88.46739196777344 
+15         FLOW_ID                        87.10118103027344 
+7          TCP_WIN_MIN_OUT                -27.98051643371582 
+6          TCP_WIN_MIN_IN                 26.850950241088867 
+11         TCP_WIN_SCALE_OUT              20.84854507446289 
+9          TCP_WIN_MAX_OUT                18.66139793395996 
+2          TOTAL_FLOWS_EXP                11.691279411315918 
+8          PROTOCOL                       -8.31657600402832 
+10         TCP_FLAGS                      -6.403136253356934 
+3          TCP_WIN_MSS_IN                 -5.281381607055664 
+13         SRC_TOS                        4.460517406463623 
+1          FIRST_SWITCHED                 -3.9063966274261475 
+14         DST_TOS                        3.1527063846588135 
+5          TCP_WIN_MAX_IN                 -2.7498040199279785 
+4          LAST_SWITCHED                  2.5312464237213135 
+17         L4_DST_PORT                    -1.8639180660247803 
+0          FLOW_DURATION_MILLISECONDS     -1.4764021635055542 
+
+DeconvNet
+12         TCP_WIN_SCALE_IN               -96.61096954345703 
+16         L4_SRC_PORT                    88.46739196777344 
+15         FLOW_ID                        87.10118103027344 
+7          TCP_WIN_MIN_OUT                -27.98051643371582 
+6          TCP_WIN_MIN_IN                 26.850950241088867 
+11         TCP_WIN_SCALE_OUT              20.84854507446289 
+9          TCP_WIN_MAX_OUT                18.66139793395996 
+2          TOTAL_FLOWS_EXP                11.691279411315918 
+8          PROTOCOL                       -8.31657600402832 
+10         TCP_FLAGS                      -6.403136253356934 
+3          TCP_WIN_MSS_IN                 -5.281381607055664 
+13         SRC_TOS                        4.460517406463623 
+1          FIRST_SWITCHED                 -3.9063966274261475 
+14         DST_TOS                        3.1527063846588135 
+5          TCP_WIN_MAX_IN                 -2.7498040199279785 
+4          LAST_SWITCHED                  2.5312464237213135 
+17         L4_DST_PORT                    -1.8639180660247803 
+0          FLOW_DURATION_MILLISECONDS     -1.4764021635055542 
+
+GradientInput
+12         TCP_WIN_SCALE_IN               -7.454779624938965 
+3          TCP_WIN_MSS_IN                 -5.281310558319092 
+6          TCP_WIN_MIN_IN                 4.291642189025879 
+16         L4_SRC_PORT                    3.19498348236084 
+15         FLOW_ID                        2.799304485321045 
+5          TCP_WIN_MAX_IN                 -2.749767780303955 
+8          PROTOCOL                       -2.743077039718628 
+1          FIRST_SWITCHED                 -2.657046318054199 
+10         TCP_FLAGS                      -2.106353998184204 
+11         TCP_WIN_SCALE_OUT              2.0073511600494385 
+9          TCP_WIN_MAX_OUT                1.8034075498580933 
+17         L4_DST_PORT                    -1.7670433521270752 
+2          TOTAL_FLOWS_EXP                1.4412246942520142 
+0          FLOW_DURATION_MILLISECONDS     -1.4001712799072266 
+7          TCP_WIN_MIN_OUT                -1.1708929538726807 
+13         SRC_TOS                        0.7337962985038757 
+14         DST_TOS                        0.17726747691631317 
+4          LAST_SWITCHED                  0.10889994353055954 
+
