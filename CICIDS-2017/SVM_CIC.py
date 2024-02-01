@@ -1,4 +1,29 @@
+###################################################
+#               Parameter Setting                #
+###################################################
 
+fraction= 0.5 # how much of that database you want to use
+frac_normal = .2 #how much of the normal classification you want to reduce
+split = 0.70 # how you want to split the train/test data (this is percentage fro train)
+
+#Model Parameters
+
+max_iter=10
+loss='hinge'
+gamma=0.1
+
+
+# XAI Samples
+samples = 1#200
+
+
+# Specify the name of the output text file
+output_file_name = "SVM_LIME_CIC_output.txt"
+with open(output_file_name, "w") as f: print('---------------------------------------------------------------------------------', file = f)
+###################################################
+###################################################
+###################################################
+###################################################
 
 print('---------------------------------------------------------------------------------')
 print('SVM')
@@ -57,6 +82,7 @@ import shap
 from imblearn.over_sampling import RandomOverSampler
 import sklearn
 from sklearn.model_selection import train_test_split
+import lime
 print('---------------------------------------------------------------------------------')
 print('Defining metrics')
 print('---------------------------------------------------------------------------------')
@@ -127,6 +153,13 @@ print('-------------------------------------------------------------------------
 
 # Select which feature method you want to use by uncommenting it.
 
+
+'''
+########################################### CICIDS Features ########################################
+'''
+
+# Select which feature method you want to use by uncommenting it.
+
 '''
 all features
 '''
@@ -144,26 +177,35 @@ req_cols = [' Destination Port',' Flow Duration',' Total Fwd Packets',' Total Ba
  Information Gain according CICIDS paper
 '''
 
-'''
- req_cols = [ ' Packet Length Std', ' Total Length of Bwd Packets', ' Subflow Bwd Bytes',
-    ' Destination Port', ' Packet Length Variance', ' Bwd Packet Length Mean',' Avg Bwd Segment Size',
-    'Bwd Packet Length Max', ' Init_Win_bytes_backward','Total Length of Fwd Packets',
-    ' Subflow Fwd Bytes', 'Init_Win_bytes_forward', ' Average Packet Size', ' Packet Length Mean',
-    ' Max Packet Length',' Label']
-'''
+# req_cols = [ ' Packet Length Std', ' Total Length of Bwd Packets', ' Subflow Bwd Bytes',
+#     ' Destination Port', ' Packet Length Variance', ' Bwd Packet Length Mean',' Avg Bwd Segment Size',
+#     'Bwd Packet Length Max', ' Init_Win_bytes_backward','Total Length of Fwd Packets',
+#     ' Subflow Fwd Bytes', 'Init_Win_bytes_forward', ' Average Packet Size', ' Packet Length Mean',
+#     ' Max Packet Length',' Label']
+
+#  Our values SHAP
+
+# req_cols =  [ ' Bwd Packet Length Std', ' min_seg_size_forward', ' Average Packet Size', ' ACK Flag Count', ' Flow Duration', 'Bwd IAT Total', ' URG Flag Count', ' Avg Bwd Segment Size', ' Max Packet Length', ' Packet Length Mean', ' Packet Length Std', 'Init_Win_bytes_forward', ' Init_Win_bytes_backward', ' PSH Flag Count', ' Destination Port',' Label' ]
 
 
 '''
 ##################################### For K = 10 ################################################
 '''
+'''
+ Information Gain according CICIDS paper
+'''
+
+# req_cols = [ ' Packet Length Std', ' Total Length of Bwd Packets', ' Subflow Bwd Bytes',
+#     ' Destination Port', ' Packet Length Variance', ' Bwd Packet Length Mean',' Avg Bwd Segment Size',
+#     'Bwd Packet Length Max', ' Init_Win_bytes_backward','Total Length of Fwd Packets',
+# ' Label']
 
 '''
  1 - Common features by overall rank
 '''
 
-'''
 req_cols =  [ ' Packet Length Std', ' Destination Port', 'Init_Win_bytes_forward', ' Packet Length Mean', ' Bwd Packet Length Mean', ' Average Packet Size', ' Init_Win_bytes_backward', ' Avg Bwd Segment Size', 'Bwd Packet Length Max', ' Packet Length Variance',' Label' ]
-'''
+
 
 '''
  2 - Chi square
@@ -230,9 +272,7 @@ req_cols =  [ ' Packet Length Std', 'Init_Win_bytes_forward', ' Bwd Packet Lengt
  1 - Common features by overall rank
 '''
 
-'''
-req_cols =  [ ' Packet Length Std', ' Destination Port', 'Init_Win_bytes_forward', ' Packet Length Mean', ' Bwd Packet Length Mean', ' Label' ]
-'''
+# req_cols =  [ ' Packet Length Std', ' Destination Port', 'Init_Win_bytes_forward', ' Packet Length Mean', ' Bwd Packet Length Mean', ' Label' ]
 
 '''
  2 - Chi square
@@ -286,8 +326,7 @@ req_cols =  [ ' Average Packet Size', ' Destination Port', ' Packet Length Mean'
  8 - Combined Selection
 '''
 
-
-req_cols =  [ ' Packet Length Std', 'Init_Win_bytes_forward', ' Bwd Packet Length Mean', 'Bwd Packet Length Max', ' Destination Port', ' Label' ]
+# req_cols =  [ ' Packet Length Std', 'Init_Win_bytes_forward', ' Bwd Packet Length Mean', 'Bwd Packet Length Max', ' Destination Port', ' Label' ]
 
 
 print('---------------------------------------------------------------------------------')
@@ -315,113 +354,177 @@ df7 = pd.read_csv ('cicids_db/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.c
 frames = [df0, df1, df2, df3, df4, df5,df6, df7]
 
 df = pd.concat(frames,ignore_index=True)
-df = df.sample(frac = 1)
-df = df.drop_duplicates()
+df = df.sample(frac = fraction)
+#df = df.drop_duplicates()
+y = df.pop(' Label')
+df = df.assign(Label = y)
+
+
+print('---------------------------------------------------------------------------------')
+print('Removing top features for acc')
+print('---------------------------------------------------------------------------------')
+
+# df.pop('Bwd Avg Bulk Rate')
+# df.pop(' ACK Flag Count')
+# df.pop('Active Mean')
+# df.pop('Bwd IAT Total')
+# df.pop(' Idle Std')
+# df.pop(' Packet Length Std')
+# df.pop(' PSH Flag Count')
+# df.pop(' Init_Win_bytes_backward')
+# df.pop(' Packet Length Variance')
+# df.pop(' Flow IAT Min')
+# df.pop('Bwd Packet Length Max')
+# df.pop(' Idle Max')
+# df.pop('Idle Mean')
+# df.pop(' Packet Length Mean')
+# df.pop(' Fwd IAT Mean')
+# df.pop(' Max Packet Length')
+# df.pop(' Fwd IAT Min')
+# df.pop(' Fwd Packet Length Max')
+# df.pop(' Idle Min')
+# df.pop('Fwd Packets/s')
+# df.pop(' Fwd Packet Length Mean')
+# df.pop(' min_seg_size_forward')
+# df.pop(' Fwd URG Flags')
+# df.pop(' Fwd Header Length')
+# df.pop('Fwd PSH Flags')
+# df.pop(' Min Packet Length')
+# df.pop(' Fwd IAT Std')
+# df.pop(' Fwd IAT Max')
+# df.pop(' Subflow Bwd Bytes')
+# df.pop('Fwd IAT Total')
+# df.pop('FIN Flag Count')
+# df.pop(' Fwd Packet Length Std')
+# df.pop(' SYN Flag Count')
+# df.pop(' Fwd Packet Length Min')
+# df.pop('Flow Bytes/s')
+# df.pop(' Flow Packets/s')
+# df.pop(' Flow IAT Std')
+# df.pop(' Bwd Packet Length Min')
+# df.pop('Init_Win_bytes_forward')
+# df.pop(' Total Backward Packets')
+# df.pop(' Fwd Avg Packets/Bulk')
+# df.pop(' Bwd Packets/s')
+# df.pop(' Total Fwd Packets')
+# df.pop(' Bwd Header Length')
+# df.pop(' CWE Flag Count')
+# df.pop(' Bwd PSH Flags')
+# df.pop(' Flow IAT Mean')
+# df.pop(' Subflow Bwd Packets')
+# df.pop(' Bwd URG Flags')
+# df.pop(' RST Flag Count')
+# df.pop(' Bwd Packet Length Mean')
+# df.pop('Subflow Fwd Packets')
+# df.pop(' Bwd Packet Length Std')
+# df.pop(' Subflow Fwd Bytes')
+# df.pop(' Fwd Avg Bulk Rate')
+# df.pop(' act_data_pkt_fwd')
+# df.pop(' Flow IAT Max')
+# df.pop('Fwd Avg Bytes/Bulk')
+# df.pop(' Active Std')
+# df.pop(' Destination Port')
+# df.pop(' Bwd Avg Packets/Bulk')
+# df.pop(' Bwd IAT Min')
+# df.pop(' Total Length of Bwd Packets')
+# df.pop(' URG Flag Count')
+# df.pop(' Bwd Avg Bytes/Bulk')
+# df.pop(' Down/Up Ratio')
+# df.pop(' Active Min')
+# df.pop(' Bwd IAT Max')
+# df.pop(' ECE Flag Count')
+# df.pop(' Flow Duration')
+# df.pop(' Active Max')
+# df.pop(' Bwd IAT Mean')
+# df.pop(' Bwd IAT Std')
+# df.pop(' Average Packet Size')
+# df.pop(' Avg Fwd Segment Size')
+# df.pop(' Avg Bwd Segment Size')
+
+print('---------------------------------------------------------------------------------')
+print('Reducing Normal rows')
+print('---------------------------------------------------------------------------------')
+print('')
+
+
+#filters
+
+filtered_normal = df[df['Label'] == 'BENIGN']
+
+#reduce
+
+reduced_normal = filtered_normal.sample(frac=frac_normal)
+
+#join
+
+df = pd.concat([df[df['Label'] != 'BENIGN'], reduced_normal])
+
+''' ---------------------------------------------------------------'''
+df_max_scaled = df.copy()
+
+
+y = df_max_scaled['Label'].replace({'DoS GoldenEye': 'Dos/Ddos', 'DoS Hulk': 'Dos/Ddos', 'DoS Slowhttptest': 'Dos/Ddos', 'DoS slowloris': 'Dos/Ddos', 'Heartbleed': 'Dos/Ddos', 'DDoS': 'Dos/Ddos','FTP-Patator': 'Brute Force', 'SSH-Patator': 'Brute Force','Web Attack - Brute Force': 'Web Attack', 'Web Attack - Sql Injection': 'Web Attack', 'Web Attack - XSS': 'Web Attack'})
+
+df_max_scaled.pop('Label')
+
+
+
 print('---------------------------------------------------------------------------------')
 print('---------------------------------------------------------------------------------')
 print('Normalizing')
 print('---------------------------------------------------------------------------------')
-df_max_scaled = df.copy()
-y = df_max_scaled[' Label'].replace({'DDoS':'Dos/Ddos','DoS GoldenEye': 'Dos/Ddos', 'DoS Hulk': 'Dos/Ddos', 'DoS Slowhttptest': 'Dos/Ddos', 'DoS slowloris': 'Dos/Ddos', 'Heartbleed': 'Dos/Ddos','FTP-Patator': 'Brute Force', 'SSH-Patator': 'Brute Force','Web Attack - Brute Force': 'Web Attack', 'Web Attack - Sql Injection': 'Web Attack', 'Web Attack - XSS': 'Web Attack'})
-df_max_scaled.pop(' Label')
-df_max_scaled
+
 for col in df_max_scaled.columns:
     t = abs(df_max_scaled[col].max())
     df_max_scaled[col] = df_max_scaled[col]/t
 df_max_scaled
 df = df_max_scaled.assign( Label = y)
 df = df.fillna(0)
-print('---------------------------------------------------------------------------------')
-print('Counting labels')
-print('---------------------------------------------------------------------------------')
-print('')
 
-y = df.pop('Label')
-X = df
-# summarize class distribution
-counter = Counter(y)
-print(counter)
-#df = X.assign( Label = y)
-
-print('---------------------------------------------------------------------------------')
-print('Spliting Train and Test')
-print('---------------------------------------------------------------------------------')
-###############################################
-'''
-df['is_train'] = np.random.uniform(0, 1, len(df)) <= .70
-train, test = df[df['is_train']==True], df[df['is_train']==False]
-
-features = df.columns[:len(req_cols)-2]
-y_train, label = pd.factorize(train['Label'])
-y_test, label = pd.factorize(test['Label'])
-#---------------------------------------------------------------------
-X_train = train[features]
-X_test = test[features]
-'''
-
-X_train,X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, train_size=0.70)
-df = X.assign( Label = y)
-
-#----------------------------------------
 print('---------------------------------------------------------------------------------')
 print('Balance Datasets')
 print('---------------------------------------------------------------------------------')
 print('')
-counter = Counter(y_train)
+
+counter = Counter(y)
 print(counter)
 
 # call balance operation until all labels have the same size
 counter_list = list(counter.values())
 for i in range(1,len(counter_list)):
     if counter_list[i-1] != counter_list[i]:
-        X_train, y_train = oversample(X_train, y_train)
+        df, y = oversample(df, y)
 
-counter = Counter(y_train)
+counter = Counter(y)
+
+
+df = df.assign(Label = y)
 print('train len',counter)
 
-# # After OverSampling training dataset
+y = df.pop('Label')
+X = df
 
-X_train = X_train.assign( Label = y_train)
+df = df.assign(Label = y)
 
-#Drop ALert column from train
-X_train.pop('Label')
-labels_train_number, labels_train_label = pd.factorize(y_train)
-labels_test_number, labels_test_label = pd.factorize(y_test)
 
-# # Oversampling and balancing test data
-
-counter = Counter(y_test)
-print(counter)
-counter_list = list(counter.values())
-for i in range(1,len(counter_list)):
-    if counter_list[i-1] != counter_list[i]:
-        X_test, y_test = oversample(X_test,y_test)
-
-counter = Counter(y_test)
-print('test len ', counter)
-
-#joining features and label
-X_test = X_test.assign(Label = y_test)
-
-#Randomize df order
-X_test = X_test.sample(frac = 1)
-
-#Drop label column
-y_test = X_test.pop('Label')
-
-y = y_test
-
-# Separate features and labels
-y_train, label = pd.factorize(y_train)
 print('---------------------------------------------------------------------------------')
+print('Spliting Train and Test')
+print('---------------------------------------------------------------------------------')
+
+
+X_train,X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, train_size=split)
+df = X.assign( Label = y)
+
+print('---------------------------------------------------------------------------------')
+y_train, label = pd.factorize(y_train)
 print('Model training')
 print('---------------------------------------------------------------------------------')
 
 start = time.time()
 
-rbf_feature = RBFSampler(gamma=1, random_state=1)
+rbf_feature = RBFSampler(gamma=gamma, random_state=1)
 X_features = rbf_feature.fit_transform(X_train)
-clf = SGDClassifier(max_iter=20,loss='hinge')
+clf = SGDClassifier(max_iter=max_iter,loss=loss)
 clf.fit(X_features, y_train)
 clf.score(X_features, y_train)
 end = time.time()
@@ -446,8 +549,6 @@ print('-------------------------------------------------------------------------
 ypred = rbf_pred
 pred_label = label[ypred]
 
-
-
 print('---------------------------------------------------------------------------------')
 print('Confusion Matrix')
 print('---------------------------------------------------------------------------------')
@@ -460,7 +561,7 @@ rows, cols = confusion_matrix.shape
 z[:rows, :cols] = confusion_matrix
 confusion_matrix  = pd.DataFrame(z, columns=all_unique_values, index=all_unique_values)
 #confusion_matrix.to_csv('DNN_conf_matrix.csv')
-print(confusion_matrix)
+with open(output_file_name, "a") as f:print(confusion_matrix, file = f)
 FP = confusion_matrix.sum(axis=0) - np.diag(confusion_matrix)
 FN = confusion_matrix.sum(axis=1) - np.diag(confusion_matrix)
 TP = np.diag(confusion_matrix)
@@ -482,7 +583,7 @@ print('-------------------------------------------------------------------------
 print('Metrics')
 print('---------------------------------------------------------------------------------')
 Acc = ACC(TP_total,TN_total, FP_total, FN_total)
-print('Accuracy total: ', Acc)
+with open(output_file_name, "a") as f:print('Accuracy total: ', Acc, file = f)
 Precision = PRECISION(TP_total, FP_total)
 print('Precision total: ', Precision )
 Recall = RECALL(TP_total, FN_total)
@@ -493,6 +594,137 @@ BACC = BACC(TP_total,TN_total, FP_total, FN_total)
 print('BACC total: ', BACC)
 MCC = MCC(TP_total,TN_total, FP_total, FN_total)
 print('MCC total: ', MCC)
+
+
+with open(output_file_name, "a") as f:print('Accuracy total: ', Acc, file = f)
+with open(output_file_name, "a") as f:print('Precision total: ', Precision , file = f)
+with open(output_file_name, "a") as f:print('Recall total: ', Recall,  file = f)
+with open(output_file_name, "a") as f:print(    'F1 total: ', F1  , file = f)
+with open(output_file_name, "a") as f:print(   'BACC total: ', BACC   , file = f)
+with open(output_file_name, "a") as f:print(    'MCC total: ', MCC     , file = f)
+
+
+
+#----------------AUCROC--------------------
+y = df.pop('Label')
+X = df
+
+
+# Replace multiclass with many y binary class
+y1, y2 = pd.factorize(y)
+
+y_0 = pd.DataFrame(y1)
+y_1 = pd.DataFrame(y1)
+y_2 = pd.DataFrame(y1)
+y_3 = pd.DataFrame(y1)
+y_4 = pd.DataFrame(y1)
+y_5 = pd.DataFrame(y1)
+y_6 = pd.DataFrame(y1)
+
+# y_0 = y_0.replace(0, 0)
+# y_0 = y_0.replace(1, 1)
+y_0 = y_0.replace(2, 1)
+y_0 = y_0.replace(3, 1)
+y_0 = y_0.replace(4, 1)
+y_0 = y_0.replace(5, 1)
+y_0 = y_0.replace(6, 1)
+
+
+
+y_1 = y_1.replace(1, 9)
+
+y_1 = y_1.replace(0, 1)
+y_1 = y_1.replace(9, 0)
+y_1 = y_1.replace(2, 1)
+y_1 = y_1.replace(3, 1)
+y_1 = y_1.replace(4, 1)
+y_1 = y_1.replace(5, 1)
+y_1 = y_1.replace(6, 1)
+
+y_2 = y_2.replace(0, 1)
+# y_2 = y_2.replace(1, 1)
+y_2 = y_2.replace(2, 0)
+y_2 = y_2.replace(3, 1)
+y_2 = y_2.replace(4, 1)
+y_2 = y_2.replace(5, 1)
+y_2 = y_2.replace(6, 1)
+
+y_3 = y_3.replace(0, 1)
+# y_3 = y_3.replace(1, 1)
+y_3 = y_3.replace(2, 1)
+y_3 = y_3.replace(3, 0)
+y_3 = y_3.replace(4, 1)
+y_3 = y_3.replace(5, 1)
+y_3 = y_3.replace(6, 1)
+
+y_4 = y_4.replace(0, 1)
+# y_4 = y_4.replace(1, 1)
+y_4 = y_4.replace(2, 1)
+y_4 = y_4.replace(3, 1)
+y_4 = y_4.replace(4, 0)
+y_4 = y_4.replace(5, 1)
+y_4 = y_4.replace(6, 1)
+
+y_5 = y_5.replace(0, 1)
+# y_5 = y_5.replace(1, 1)
+y_5 = y_5.replace(2, 1)
+y_5 = y_5.replace(3, 1)
+y_5 = y_5.replace(4, 1)
+y_5 = y_5.replace(5, 0)
+y_5 = y_5.replace(6, 1)
+
+y_6 = y_6.replace(0, 1)
+# y_6 = y_6.replace(1, 1)
+y_6 = y_6.replace(2, 1)
+y_6 = y_6.replace(3, 1)
+y_6 = y_6.replace(4, 1)
+y_6 = y_6.replace(5, 1)
+y_6 = y_6.replace(6, 0)
+
+df = df.assign(Label = y)
+
+
+#AUCROC - Train the model and get each auc roc
+aucroc =[]
+y_array = [y_0,y_1,y_2,y_3,y_4,y_5,y_6]
+for j in range(0,len(y_array)):
+    # print(j)
+    #------------------------------------------------------------------------------------------------------------
+    X_train,X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y_array[j], train_size=split)
+    
+
+    rbf_feature = RBFSampler(gamma=gamma, random_state=1)
+    X_features = rbf_feature.fit_transform(X_train)
+    clf = SGDClassifier(max_iter=max_iter,loss=loss)
+    clf.fit(X_features, y_train)
+    clf.score(X_features, y_train)
+
+
+    X_test_ = rbf_feature.fit_transform(X_test)
+    rbf_pred = clf.predict(X_test_)
+
+    y_pred = rbf_pred
+
+
+    y_scores = y_pred
+    y_true = y_test
+    
+    # Calculate AUC-ROC score
+    auc_roc_score= roc_auc_score(y_true, y_scores,  average='weighted')  # Use 'micro' or 'macro' for different averaging strategies
+    # print("AUC-ROC Score class:", auc_roc_score)
+    aucroc.append(auc_roc_score)
+    #-------------------------------------------------------------------------------------------------------    -----
+    # Calculate the average
+average = sum(aucroc) / len(aucroc)
+
+# Display the result
+with open(output_file_name, "a") as f:print("AUC ROC Average:", average, file = f)
+print("AUC ROC Average:", average)
+
+#End AUC ROC
+
+
+
 
 #----------------------------------------------------------------
 for i in range(0,len(TP)):
@@ -513,5 +745,7 @@ y_test_bin = label_binarize(y_test,classes = classes_n)
 n_classes = y_test_bin.shape[1]
 try:
     print('rocauc is ',roc_auc_score(y_test_bin, ypred, multi_class='ovr'))
+    
+    # with open(output_file_name, "a") as f:print(   'AUC_ROC total: ',roc_auc_score(y_test_bin, ypred, multi_class='ovr')  , file = f)
 except:
     print('rocauc is nan')
