@@ -1,7 +1,33 @@
 # Let us Unveil Network Intrusion Features: Enhancing Network Intrusion Detection Systems via XAI-based Feature Selection
 
 # Abstract 
-The lack of performance evaluation and explainability of artificial intelligence (AI) models for intrusion detection systems (IDS) is a significant concern for human security analysts. In this context, feature selection is a crucial aspect of XAI where extracting the most significant features is essential for enhancing the explainability of results and assisting in the field of cyber security. In this study, we address such challenges of explaining AI for IDS where we propose novel methods for feature selection and create an explainable AI (XAI) framework for network intrusion detection.  We generate global explanations using SHapley Additive exPlanations (SHAP), extracting the most important features for all models and develop five novel feature selection methods from it. To evaluate our approach, we assess seven black-box AI models using two real-world network intrusion datasets. We establish a baseline without feature selection and gradually reduce the feature sets.  Additionally, we compare our SHAP-based methods with different state-of-the-art feature selection methods. Our framework offers innovative feature selection methods and provides a foundation for different XAI approaches which can help network security analysts in making more informed decisions. We openly share our source codes, offering a baseline XAI framework for the community to expand upon with new datasets and models. Our work contributes to the development of robust and interpretable AI models for network intrusion detection tasks.
+The lack of performance evaluation and explainability of artificial
+intelligence (AI) models for intrusion detection systems (IDS) is a
+significant concern for human security analysts. In this context,
+feature selection is a crucial aspect of IDS where extracting the most
+significant features is essential for enhancing the performance of
+intrusion detection and understanding the main attributes that
+identify anomalies in network security. In this study, we address
+such challenge of feature selection for IDS where we propose
+novel methods for feature selection using explainable AI (XAI)
+methods. We extract the most important features of different AI
+models and develop five novel feature selection methods from them.
+To evaluate our approach, we assess seven black-box AI models
+using two real-world network intrusion datasets. We establish
+a baseline without feature selection and gradually reduce the
+feature sets. We also compare our XAI-based feature selection
+methods with different state-of-the-art feature selection methods
+where we demonstrate that most AI models exhibit superior
+performance when utilizing the top significant features selected
+by our framework. Our work offers innovative feature selection
+methods and provides a foundation for different XAI-based
+approaches which can help network security analysts in making
+more informed decisions based on knowledge of top intrusion
+features. We release our source codes, offering a baseline XAI-based
+feature selection framework for the community to expand upon
+with new models. Our work provides an important contribution
+towards the development of interpretable AI models for network
+intrusion detection tasks by enhancing feature selection.
 
 # Performance 
 
