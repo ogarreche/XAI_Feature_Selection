@@ -1,3 +1,25 @@
+###################################################
+#               Parameter Setting                #
+###################################################
+
+fraction= 0.05 # how much of that database you want to use
+frac_normal = .2 #how much of the normal classification you want to reduce
+split = 0.70 # how you want to split the train/test data (this is percentage fro train)
+
+#Model Parameters
+
+max_iter=70
+
+# XAI Samples
+samples = 1# 1000
+
+output_file_name = "MLP_LIME_SML.txt"
+with open(output_file_name, "w") as f: print('---------------------------------------------------------------------------------', file = f)
+
+###################################################
+###################################################
+###################################################
+
 print('---------------------------------------------------------------------------------')
 print('MLP')
 print('---------------------------------------------------------------------------------')
@@ -55,6 +77,7 @@ import sklearn
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import RandomOverSampler
 import shap
+import lime
 np.random.seed(0)
 #----------------------------------------------------------------------
 #---------------------------------------------------------------------
@@ -119,18 +142,16 @@ print('-------------------------------------------------------------------------
 all features
 '''
 
-'''
-req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
-            'TOTAL_FLOWS_EXP','TCP_WIN_MSS_IN','LAST_SWITCHED',
-            'TCP_WIN_MAX_IN','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT',
-           'PROTOCOL','TCP_WIN_MAX_OUT','TCP_FLAGS',
-            'TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS',
-            'DST_TOS','FLOW_ID','L4_SRC_PORT','L4_DST_PORT',
-           'MIN_IP_PKT_LEN','MAX_IP_PKT_LEN','TOTAL_PKTS_EXP',
-           'TOTAL_BYTES_EXP','IN_BYTES','IN_PKTS','OUT_BYTES','OUT_PKTS',
-            'ALERT']
+# req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
+#             'TOTAL_FLOWS_EXP','TCP_WIN_MSS_IN','LAST_SWITCHED',
+#             'TCP_WIN_MAX_IN','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT',
+#            'PROTOCOL','TCP_WIN_MAX_OUT','TCP_FLAGS',
+#             'TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS',
+#             'DST_TOS','FLOW_ID','L4_SRC_PORT','L4_DST_PORT',
+#            'MIN_IP_PKT_LEN','MAX_IP_PKT_LEN','TOTAL_PKTS_EXP',
+#            'TOTAL_BYTES_EXP','IN_BYTES','IN_PKTS','OUT_BYTES','OUT_PKTS',
+#             'ALERT']
 
-'''
 
 
 '''
@@ -142,8 +163,18 @@ req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
 '''
 
 '''
-req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','ALERT' ]
+req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','TCP_FLAGS','TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS','DST_TOS','ALERT' ]
+
 '''
+
+
+'''
+ Our values SHAP
+# '''
+
+# req_cols =  [ 'PROTOCOL', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MAX_OUT', 'L4_SRC_PORT', 'TCP_WIN_MIN_OUT', 'FLOW_ID', 'TCP_FLAGS', 'IN_BYTES', 'SRC_TOS', 'TCP_WIN_SCALE_OUT', 'L4_DST_PORT', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MSS_IN', 'TCP_WIN_SCALE_IN','ALERT' ]
+
+
 
 
 '''
@@ -151,15 +182,25 @@ req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP',
 '''
 
 '''
+ k gain according CICIDS paper
+'''
+
+
+# req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','ALERT' ]
+
+
+
+
+'''
  1 - Common features by overall rank
 '''
 
-'''
-
-req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MAX_OUT', 'TCP_WIN_MIN_OUT', 'SRC_TOS', 'DST_TOS','ALERT' ]
 
 
-'''
+# req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MAX_OUT', 'TCP_WIN_MIN_OUT', 'SRC_TOS', 'DST_TOS','ALERT' ]
+
+
+
 
 '''
  2 - Chi square
@@ -237,12 +278,10 @@ req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_M
  1 - Common features by overall rank
 '''
 
-'''
 
-req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS','ALERT' ]
+# req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS','ALERT' ]
 
 
-'''
 
 '''
  2 - Chi square
@@ -306,7 +345,9 @@ req_cols =  [ 'TCP_WIN_SCALE_IN', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MSS_IN'
 '''
 
 
+
 req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'FLOW_DURATION_MILLISECONDS','ALERT']
+
 
 
 
@@ -348,7 +389,7 @@ frames = [df0, df1, df2, df3, df4, df5, df7, df8, df9, df10, df11, df12, df13, d
 
 df = pd.concat(frames,ignore_index=True)
 #---------------------------------------------------------------------------------------------------#----------------------------------------------------------------
-df = df.sample(frac =.1)
+df = df.sample(frac = fraction)
 print('---------------------------------------------------------------------------------')
 print('Normalizing Databases')
 print('---------------------------------------------------------------------------------')
@@ -365,24 +406,49 @@ df = df_max_scaled.assign(ALERT = y)
 df = df.fillna(0)
 
 #----------------------------------------------------------------#----------------------------------------------------------------
-
+# df.pop('TCP_WIN_SCALE_OUT')
+# df.pop('TCP_WIN_MIN_IN')
+# df.pop('TOTAL_BYTES_EXP')
+# df.pop('TCP_WIN_MIN_OUT')
+# df.pop('TCP_WIN_MAX_IN')
+# df.pop('TCP_FLAGS')
+# df.pop('IN_PKTS')
+# df.pop('TCP_WIN_MSS_IN')
+# df.pop('TCP_WIN_SCALE_IN')
+# df.pop('TCP_WIN_MAX_OUT')
+# df.pop('LAST_SWITCHED')
+# df.pop('L4_DST_PORT')
+# df.pop('L4_SRC_PORT')
+# df.pop('IN_BYTES')
+# df.pop('MAX_IP_PKT_LEN')
+# df.pop('FLOW_DURATION_MILLISECONDS')
+# df.pop('FLOW_ID')
+# df.pop('DST_TOS')
+# df.pop('FIRST_SWITCHED')
+# df.pop('OUT_BYTES')
+# df.pop('OUT_PKTS')
+# df.pop('MIN_IP_PKT_LEN')
+# df.pop('SRC_TOS')
+# df.pop('PROTOCOL')
+# df.pop('TOTAL_FLOWS_EXP')
+# df.pop('TOTAL_PKTS_EXP')
 
 print('---------------------------------------------------------------------------------')
 print('Spliting the db in training and testing')
 print('---------------------------------------------------------------------------------')
 
-df['is_train'] = np.random.uniform(0, 1, len(df)) <= .70
+# df['is_train'] = np.random.uniform(0, 1, len(df)) <= .70
 
-train, test = df[df['is_train']==True], df[df['is_train']==False]
-print('Number of the training data:', len(train))
-print('Number of the testing data:', len(test))
+# train, test = df[df['is_train']==True], df[df['is_train']==False]
+# print('Number of the training data:', len(train))
+# print('Number of the testing data:', len(test))
 
-features = df.columns[:26]
+# features = df.columns[:26]
 
-y_train, label = pd.factorize(train['ALERT'])
-print('y_train: ',y_train)
-y_test, label = pd.factorize(test['ALERT'])
-print('y_test: ',y_test)
+# y_train, label = pd.factorize(train['ALERT'])
+# print('y_train: ',y_train)
+# y_test, label = pd.factorize(test['ALERT'])
+# print('y_test: ',y_test)
 
 
 y = df.pop('ALERT')
@@ -390,11 +456,11 @@ X= df
 
 
 
-X_train = train[features]
-X_test = test[features]
-#----------------------------------------------------------------#----------------------------------------------------------------
+# X_train = train[features]
+# X_test = test[features]
+# #----------------------------------------------------------------#----------------------------------------------------------------
 
-X_train,X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, train_size=0.70)
+X_train,X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, train_size=split)
 df = X.assign( ALERT = y)
 
 #----------------------------------------
@@ -465,7 +531,7 @@ print('Training Model')
 print('---------------------------------------------------------------------------------')
 
 start = time.time()
-MLP = MLPClassifier(random_state=1, max_iter=300).fit(X_train, y_train)
+MLP = MLPClassifier(random_state=1, max_iter=max_iter).fit(X_train, y_train)
 end = time.time()
 
 print('---------------------------------------------------------------------------------')
@@ -495,7 +561,8 @@ z = np.zeros((len(all_unique_values), len(all_unique_values)))
 rows, cols = confusion_matrix.shape
 z[:rows, :cols] = confusion_matrix
 confusion_matrix  = pd.DataFrame(z, columns=all_unique_values, index=all_unique_values)
-print(confusion_matrix)
+
+with open(output_file_name, "a") as f:print(confusion_matrix, file = f)
 
 FP = confusion_matrix.sum(axis=0) - np.diag(confusion_matrix)
 FN = confusion_matrix.sum(axis=1) - np.diag(confusion_matrix)
@@ -525,12 +592,83 @@ Recall = RECALL(TP_total, FN_total)
 F1 = F1(Recall,Precision)
 BACC = BACC(TP_total,TN_total, FP_total, FN_total)
 MCC = MCC(TP_total,TN_total, FP_total, FN_total)
-print('Accuracy total: ', Acc)
+
+with open(output_file_name, "a") as f:print('Accuracy total: ', Acc, file = f)
 print('Precision total: ', Precision )
 print('Recall total: ', Recall )
 print('F1 total: ', F1 )
 print('BACC total: ', BACC)
 print('MCC total: ', MCC)
+# with open(output_file_name, "a") as f:print('Accuracy total: ', Acc, file = f)
+with open(output_file_name, "a") as f:print('Precision total: ', Precision , file = f)
+with open(output_file_name, "a") as f:print('Recall total: ', Recall,  file = f)
+with open(output_file_name, "a") as f:print(    'F1 total: ', F1  , file = f)
+with open(output_file_name, "a") as f:print(   'BACC total: ', BACC   , file = f)
+with open(output_file_name, "a") as f:print(    'MCC total: ', MCC     , file = f)
+
+
+
+#----------------AUCROC--------------------
+#----------------AUCROC--------------------
+y = df.pop('ALERT')
+X = df
+y1, y2 = pd.factorize(y)
+
+# Replace multiclass with many y binary class
+y_0 = pd.DataFrame(y1)
+y_1 = pd.DataFrame(y1)
+y_2 = pd.DataFrame(y1)
+
+
+y_0 = y_0.replace(0, 0)
+y_0 = y_0.replace(1, 1)
+y_0 = y_0.replace(2, 1)
+
+
+y_1 = y_1.replace(0, 1)
+y_1 = y_1.replace(1, 0)
+y_1 = y_1.replace(2, 1)
+
+
+y_2 = y_2.replace(0, 1)
+y_2 = y_2.replace(1, 1)
+y_2 = y_2.replace(2, 0)
+
+
+df = df.assign(Label = y)
+
+#AUCROC
+aucroc =[]
+y_array = [y_0,y_1,y_2]
+print('start AUCROC')
+for j in range(0,len(y_array)):
+    # print(j)
+    #------------------------------------------------------------------------------------------------------------
+    X_train,X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y_array[j], train_size=split)
+    
+
+    MLP = MLPClassifier(random_state=1, max_iter=max_iter).fit(X_train, y_train)
+    y_pred = MLP.predict_proba(X_test)
+    ynew = np.argmax(y_pred,axis = 1)
+
+    y_scores = ynew
+    y_true = y_test
+    # Calculate AUC-ROC score
+    auc_roc_score= roc_auc_score(y_true, y_scores,  average='weighted')  # Use 'micro' or 'macro' for different averaging strategies
+    # print("AUC-ROC Score class:", auc_roc_score)
+    aucroc.append(auc_roc_score)
+    print(j,' - ok')
+    #-------------------------------------------------------------------------------------------------------    -----
+    # Calculate the average
+average = sum(aucroc) / len(aucroc)
+
+# Display the result
+with open(output_file_name, "a") as f:print("AUC ROC Average:", average, file = f)
+print("AUC ROC Average:", average)
+
+#End AUC ROC
+
+
 #----------------------------------------
 for i in range(0,len(TP)):
     Acc = ACC(TP[i],TN[i], FP[i], FN[i])
