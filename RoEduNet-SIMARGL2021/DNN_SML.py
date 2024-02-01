@@ -1,4 +1,34 @@
 
+###################################################
+#               Parameter Setting                #
+###################################################
+
+
+fraction= 0.5 # how much of that database you want to use
+frac_normal = .2 #how much of the normal classification you want to reduce
+split = 0.70 # how you want to split the train/test data (this is percentage fro train)
+
+#Model Parameters
+
+dropout_rate = 0.01
+nodes = 70
+out_layer = 3
+optimizer='adam'
+loss='sparse_categorical_crossentropy'
+epochs=1
+batch_size=2*256
+
+
+# XAI Samples
+samples = 1 #2500 # 5000
+
+
+# Specify the name of the output text file
+output_file_name = "DNN_SHAP_SML.txt"
+with open(output_file_name, "w") as f: print('---------------------------------------------------------------------------------', file = f)
+###################################################
+###################################################
+###################################################
 
 print('--------------------------------------------------')
 print('DNN sensor with Shap')
@@ -54,6 +84,10 @@ from sklearn.metrics import f1_score, accuracy_score
 from interpret import show
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.metrics import confusion_matrix
+
+
+from lime_stability.stability import LimeTabularExplainerOvr
+import lime
 
 pd.set_option('display.max_columns', None)
 shap.initjs()
@@ -144,24 +178,26 @@ print('--------------------------------------------------')
 ########################################### SIMARGL Features ########################################
 '''
 
+'''
+########################################### SIMARGL Features ########################################
+'''
+
 # Select which feature method you want to use by uncommenting it.
 
 '''
 all features
 '''
 
-'''
-req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
-            'TOTAL_FLOWS_EXP','TCP_WIN_MSS_IN','LAST_SWITCHED',
-            'TCP_WIN_MAX_IN','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT',
-           'PROTOCOL','TCP_WIN_MAX_OUT','TCP_FLAGS',
-            'TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS',
-            'DST_TOS','FLOW_ID','L4_SRC_PORT','L4_DST_PORT',
-           'MIN_IP_PKT_LEN','MAX_IP_PKT_LEN','TOTAL_PKTS_EXP',
-           'TOTAL_BYTES_EXP','IN_BYTES','IN_PKTS','OUT_BYTES','OUT_PKTS',
-            'ALERT']
+# req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
+#             'TOTAL_FLOWS_EXP','TCP_WIN_MSS_IN','LAST_SWITCHED',
+#             'TCP_WIN_MAX_IN','TCP_WIN_MIN_IN','TCP_WIN_MIN_OUT',
+#            'PROTOCOL','TCP_WIN_MAX_OUT','TCP_FLAGS',
+#             'TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS',
+#             'DST_TOS','FLOW_ID','L4_SRC_PORT','L4_DST_PORT',
+#            'MIN_IP_PKT_LEN','MAX_IP_PKT_LEN','TOTAL_PKTS_EXP',
+#            'TOTAL_BYTES_EXP','IN_BYTES','IN_PKTS','OUT_BYTES','OUT_PKTS',
+#             'ALERT']
 
-'''
 
 
 '''
@@ -172,36 +208,52 @@ req_cols = ['FLOW_DURATION_MILLISECONDS','FIRST_SWITCHED',
  k gain according CICIDS paper
 '''
 
+# req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','TCP_FLAGS','TCP_WIN_SCALE_OUT','TCP_WIN_SCALE_IN','SRC_TOS','DST_TOS','ALERT' ]
+
+
 '''
-req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','ALERT' ]
+ Our values SHAP
 '''
+
+# req_cols =  [ 'PROTOCOL', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MAX_OUT', 'L4_SRC_PORT', 'TCP_WIN_MIN_OUT', 'FLOW_ID', 'TCP_FLAGS', 'IN_BYTES', 'SRC_TOS', 'TCP_WIN_SCALE_OUT', 'L4_DST_PORT', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MSS_IN', 'TCP_WIN_SCALE_IN','ALERT' ]
+
+
 
 
 '''
 ##################################### For K = 10 ################################################
 '''
 
+
+
+'''
+ k gain according CICIDS paper
+'''
+
+
+# req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'TCP_WIN_MSS_IN', 'LAST_SWITCHED', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'PROTOCOL', 'TCP_WIN_MAX_OUT','ALERT' ]
+
+
 '''
  1 - Common features by overall rank
 '''
 
-'''
-
-req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MAX_OUT', 'TCP_WIN_MIN_OUT', 'SRC_TOS', 'DST_TOS','ALERT' ]
 
 
-'''
+# req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MAX_OUT', 'TCP_WIN_MIN_OUT', 'SRC_TOS', 'DST_TOS','ALERT' ]
+
+
+
 
 '''
  2 - Chi square
 '''
 
-'''
 
-req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'PROTOCOL', 'TCP_WIN_MAX_IN', 'TCP_WIN_MAX_OUT', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'TCP_WIN_SCALE_IN', 'TCP_WIN_SCALE_OUT', 'SRC_TOS', 'DST_TOS','ALERT' ]
+# req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'PROTOCOL', 'TCP_WIN_MAX_IN', 'TCP_WIN_MAX_OUT', 'TCP_WIN_MIN_IN', 'TCP_WIN_MIN_OUT', 'TCP_WIN_SCALE_IN', 'TCP_WIN_SCALE_OUT', 'SRC_TOS', 'DST_TOS','ALERT' ]
 
 
-'''
+
 
 '''
  3 - Feature Correlation
@@ -235,10 +287,8 @@ req_cols =  [ 'TCP_WIN_MSS_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_SCALE_IN', 'TCP_WIN_M
  6 - Common features by overall weighted rank
 '''
 
-'''
-req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'LAST_SWITCHED', 'TCP_WIN_SCALE_IN', 'TCP_WIN_MSS_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'PROTOCOL', 'TCP_FLAGS','ALERT' ]
+# req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'LAST_SWITCHED', 'TCP_WIN_SCALE_IN', 'TCP_WIN_MSS_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MIN_IN', 'PROTOCOL', 'TCP_FLAGS','ALERT' ]
 
-'''
 
 '''
  7 - Common features by overall normalized weighted rank
@@ -268,12 +318,10 @@ req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_M
  1 - Common features by overall rank
 '''
 
-'''
 
-req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS','ALERT' ]
+# req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'TCP_FLAGS','ALERT' ]
 
 
-'''
 
 '''
  2 - Chi square
@@ -318,10 +366,10 @@ req_cols =  [ 'TCP_WIN_MSS_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_SCALE_IN', 'TCP_WIN_M
  6 - Common features by overall weighted rank
 '''
 
-'''
+
 req_cols =  [ 'FLOW_DURATION_MILLISECONDS', 'FIRST_SWITCHED', 'TOTAL_FLOWS_EXP', 'LAST_SWITCHED', 'TCP_WIN_SCALE_IN','ALERT' ]
 
-'''
+
 
 '''
  7 - Common features by overall normalized weighted rank
@@ -337,7 +385,10 @@ req_cols =  [ 'TCP_WIN_SCALE_IN', 'FLOW_DURATION_MILLISECONDS', 'TCP_WIN_MSS_IN'
 '''
 
 
+'''
 req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_MSS_IN', 'FLOW_DURATION_MILLISECONDS','ALERT']
+
+'''
 
 
 
@@ -345,7 +396,7 @@ req_cols =  [ 'TCP_WIN_SCALE_IN', 'TCP_WIN_MIN_IN', 'TCP_WIN_MAX_IN', 'TCP_WIN_M
  
 print('Loading Database')
 print('--------------------------------------------------')
-fraction =1
+fraction = fraction
 #Denial of Service
 df0 = pd.read_csv ('sensor_db/dos-03-15-2022-15-44-32.csv', usecols=req_cols).sample(frac = fraction)
 df1 = pd.read_csv ('sensor_db/dos-03-16-2022-13-45-18.csv', usecols=req_cols).sample(frac = fraction)
@@ -397,29 +448,8 @@ frames = [df0, df1, df2, df3, df4, df5, df7, df8, df9, df10, df11, df12, df13, d
 df = pd.concat(frames,ignore_index=True)
 
 # shuffle the DataFrame rows
-df = df.sample(frac =0.5)
-'''
-# Factorize and extract the labels from the column PROTOCAL MAP
-u, label = pd.factorize(df['PROTOCOL_MAP']) 
+df = df.sample(frac =1)
 
-#creating instance of one-hot-encoder
-encoder = OneHotEncoder(handle_unknown='ignore')
-
-#perform one-hot encoding on 'PROTOCOL_MAP' column 
-encoder_df = pd.DataFrame(encoder.fit_transform(df[['PROTOCOL_MAP']]).toarray())
-
-#merge one-hot encoded columns back with original DataFrame
-df = df.join(encoder_df)
-# u, label = pd.factorize(test['PROTOCOL_MAP']) 
-
-
-temp =list(label.values)
-req_cols.remove('PROTOCOL_MAP')
-df.drop('PROTOCOL_MAP', axis=1, inplace=True)
-
-req_cols = req_cols + temp
-df.columns = req_cols
-'''
 # assign alert column to y
 y = df.pop('ALERT')
 
@@ -428,6 +458,50 @@ df = df.assign( ALERT = y)
 
 #Fill NaN with 0s
 df = df.fillna(0)
+
+print('---------------------------------------------------------------------------------')
+print('Removing top features')
+print('---------------------------------------------------------------------------------')
+print('')
+
+# df.pop('TCP_WIN_MIN_IN')
+# df.pop('TCP_WIN_MAX_IN')
+# df.pop('L4_SRC_PORT')
+# df.pop('TCP_WIN_SCALE_IN')
+# df.pop('TCP_WIN_MAX_OUT')
+# df.pop('L4_DST_PORT')
+# df.pop('TCP_WIN_MIN_OUT')
+# df.pop('FLOW_ID')
+# df.pop('PROTOCOL')
+# df.pop('DST_TOS')
+# df.pop('TOTAL_FLOWS_EXP')
+# df.pop('FLOW_DURATION_MILLISECONDS')
+# df.pop('TCP_WIN_MSS_IN')
+# df.pop('TCP_FLAGS')
+# df.pop('TCP_WIN_SCALE_OUT')
+# df.pop('SRC_TOS')
+# df.pop('FIRST_SWITCHED')
+# df.pop('LAST_SWITCHED')
+# df.pop('IN_PKTS')
+# df.pop('OUT_PKTS')
+# df.pop('OUT_BYTES')
+# df.pop('IN_BYTES')
+# df.pop('MIN_IP_PKT_LEN')
+# df.pop('MAX_IP_PKT_LEN')
+# df.pop('TOTAL_PKTS_EXP')
+# df.pop('TOTAL_BYTES_EXP')
+#filters
+
+filtered_normal = df[df['ALERT'] == 'None']
+
+#reduce
+
+reduced_normal = filtered_normal.sample(frac=0.2)
+
+#join
+
+df = pd.concat([df[df['ALERT'] != 'None'], reduced_normal])
+
 
 # Normalize database
 print('---------------------------------------------------------------------------------')
@@ -451,68 +525,93 @@ df = df_max_scaled.assign( ALERT = y)
 #Fill NaN with 0s
 df = df.fillna(0)
 
-print('---------------------------------------------------------------------------------')
-print('Counting labels')
-print('---------------------------------------------------------------------------------')
-print('')
-
 y = df.pop('ALERT')
 X = df
-# count class distribution 
-counter = Counter(y)
-
-df = X.assign( ALERT = y)
-
-#Remove duplicates
-df = df.drop_duplicates()
-
-y = df.pop('ALERT')
-X = df
-
-df = df.assign( ALERT = y)
-# summarize class distribution
-counter = Counter(y)
-
-train, test, labels_train, labels_test = sklearn.model_selection.train_test_split(X, y, train_size=0.70)
-df = X.assign( ALERT = y)
-
 print('---------------------------------------------------------------------------------')
 print('Balance Datasets')
 print('---------------------------------------------------------------------------------')
 print('')
-counter = Counter(labels_train)
+
+counter = Counter(y)
+print(counter)
 
 # call balance operation until all labels have the same size
 counter_list = list(counter.values())
 for i in range(1,len(counter_list)):
     if counter_list[i-1] != counter_list[i]:
-        train, labels_train = oversample(train, labels_train)
+        df, y = oversample(df, y)
+
+counter = Counter(y)
 
 
-counter = Counter(labels_train)
-print(counter)
+df = df.assign(ALERT = y)
+print('train len',counter)
 
-train = train.assign( ALERT = labels_train)
+y = df.pop('ALERT')
+X = df
 
-train.pop('ALERT')
+df = df.assign(ALERT = y)
+
+
+print('---------------------------------------------------------------------------------')
+print('Separating Training and Testing db')
+print('---------------------------------------------------------------------------------')
+print('')
+
+
+y, y_Label = pd.factorize(y)
+
+X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, train_size=split)
+df = X.assign( ALERT = y)
 
 print('---------------------------------------------------------------------------------')
 print('Defining the DNN model')
 print('---------------------------------------------------------------------------------')
 print('')
-# define the keras model
+
+
+num_columns = X_train.shape[1]
+
 model = tf.keras.Sequential()
-model.add(tf.keras.Input(shape=(len(req_cols)-1,)))
-model.add(Dropout(0.1))
-model.add(tf.keras.layers.Dense(len(req_cols),activation='relu'))
-model.add(tf.keras.layers.Dense(3,activation=tf.keras.activations.softmax))
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+# Input layer
+model.add(tf.keras.Input(shape=(num_columns,)))
+
+# Dense layers with dropout
+model.add(tf.keras.layers.Dense(nodes))
+model.add(tf.keras.layers.Dropout(dropout_rate))
+
+model.add(tf.keras.layers.Dense(nodes))
+model.add(tf.keras.layers.Dropout(dropout_rate))
+
+model.add(tf.keras.layers.Dense(nodes))
+model.add(tf.keras.layers.Dropout(dropout_rate))
+
+model.add(tf.keras.layers.Dense(nodes))
+model.add(tf.keras.layers.Dropout(dropout_rate))
+
+model.add(tf.keras.layers.Dense(nodes))
+model.add(tf.keras.layers.Dropout(dropout_rate))
+
+# Output layer
+model.add(tf.keras.layers.Dense(out_layer))
+
+
+
+model.compile(optimizer=optimizer, loss=loss)
+
 model.summary()
 
-labels_trainF, labels_trainL = pd.factorize(labels_train)
+
+#Training Model
+
+print('---------------------------------------------------------------------------------')
+print('Training the model')
+print('---------------------------------------------------------------------------------')
+print('')
 
 start = time.time()
-model.fit(train, labels_trainF, epochs=5, batch_size=1024)
+model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
 end = time.time()
 print('---------------------------------------------------------------------------------')
 print('ELAPSE TIME TRAINING MODEL: ',(end - start)/60, 'min')
@@ -522,38 +621,40 @@ print('')
 
 loss_per_epoch = model.history.history['loss']
 
+'''
 counter = Counter(labels_test)
 counter_list = list(counter.values())
 for i in range(1,len(counter_list)):
     if counter_list[i-1] != counter_list[i]:
         test, labels_test = oversample(test, labels_test)
 
+'''
 
-counter = Counter(labels_test)
+counter = Counter(y_test)
 #joining features and label
-test = test.assign(ALERT = labels_test)
+X_test = X_test.assign(ALERT = y_test)
 #Randomize df order
-test = test.sample(frac = 1)
+X_test = X_test.sample(frac = 1)
 
 #Drop label column
-labels_test = test.pop('ALERT')
+labels_test = X_test.pop('ALERT')
 
-labels_testF, labels_testL = pd.factorize(labels_test)
-
+labels_testF, labels_testL = pd.factorize(y_test)
+y_train, label = pd.factorize(y_test)
 print('---------------------------------------------------------------------------------')
 print('Model Prediction')
 print('---------------------------------------------------------------------------------')
 print('')
 print('---------------------------------------------------------------------------------')
 start = time.time()
-y_pred = model.predict(test)
+y_pred = model.predict(X_test)
 end = time.time()
 print('ELAPSE TIME MODEL PREDICTION: ',(end - start)/60, 'min')
 print('---------------------------------------------------------------------------------')
 print('')
 
 ynew = np.argmax(y_pred,axis = 1)
-score = model.evaluate(test, labels_testF,verbose=1)
+score = model.evaluate(X_test, labels_testF,verbose=1)
 pred_label = labels_testL[ynew]
 
 start_index = 0
@@ -576,7 +677,7 @@ z = np.zeros((len(all_unique_values), len(all_unique_values)))
 rows, cols = confusion_matrix.shape
 z[:rows, :cols] = confusion_matrix
 confusion_matrix  = pd.DataFrame(z, columns=all_unique_values, index=all_unique_values) 
-print(confusion_matrix)
+with open(output_file_name, "a") as f:print(confusion_matrix, file = f)
 
 #---------------------------------------------------------------------
 FP = confusion_matrix.sum(axis=0) - np.diag(confusion_matrix)  
@@ -601,7 +702,7 @@ BACC = BACC(TP_total,TN_total, FP_total, FN_total)
 MCC = MCC(TP_total,TN_total, FP_total, FN_total)
 print('---------------------------------------------------------------------------------')
 
-print('Accuracy total: ', Acc)
+with open(output_file_name, "a") as f:print('Accuracy total: ', Acc, file = f)
 print('Precision total: ', Precision )
 print('Recall total: ', Recall )
 print('F1 total: ', F1 )
@@ -617,34 +718,11 @@ for i in range(0,len(TP)):
     print('Accuracy: ', label[i] ,' - ' , Acc)
 print('---------------------------------------------------------------------------------')
     
-start_index = 0
-end_index = 500
+# start_index = 0
+# end_index = 5000
 
 notused, y_labels = pd.factorize(y)
 
 # Transforming numpy format list
 y_labels = list(y_labels)
 
-# # ------------------- GLOBAL ----------------------------
-plt.clf()
-explainer = shap.DeepExplainer(model,test[start_index:end_index].values.astype('float'))
-shap_values = explainer.shap_values(test[start_index:end_index].values.astype('float'))
-
-shap.summary_plot(shap_values = shap_values,
-                 features = test[start_index:end_index],
-                  class_names=[y_labels[0],y_labels[1],y_labels[2]],show=False)
-
-plt.savefig('DNN_Shap_Summary_plot.png')
-plt.clf()
-
-explainer = shap.DeepExplainer(model,test[start_index:end_index].values.astype('float'))
-shap_values = explainer.shap_values(test[start_index:end_index].values.astype('float'))
-
-# shap_obj = explainer(test[start_index:end_index].values.astype('float'))
-shap.summary_plot(shap_values = shap_values[0],
-                 features = test[start_index:end_index],
-                  class_names=[y_labels[0],y_labels[1],y_labels[2]],show=False)
-
-plt.savefig('DNN_Shap_Summary_Beeswarms.png')
-    
-#---------------------------------------------------------------------
