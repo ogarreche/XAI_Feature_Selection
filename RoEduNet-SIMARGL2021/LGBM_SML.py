@@ -481,12 +481,14 @@ print('--------------------------------------------------')
 start = time.time()
 
 # evaluate the model
-model = LGBMClassifier()
-cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=8, random_state=1)
-n_scores = cross_val_score(model, train, labels_train, scoring='accuracy', cv=cv, n_jobs=-10, error_score='raise')
+# model = LGBMClassifier()
+# cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=8, random_state=1)
+# n_scores = cross_val_score(model, train, labels_train, scoring='accuracy', cv=cv, n_jobs=-10, error_score='raise')
 # fit the model on the whole dataset
 model = LGBMClassifier()
 model.fit(train, labels_train)
+
+
 
 #END TIMER MODEL
 end = time.time()
