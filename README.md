@@ -33,32 +33,32 @@ intrusion detection tasks by enhancing feature selection.
 
 Low-Level XAI Feature Selection Components
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/flow.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/flow.png?raw=true)
 
 Overall performances for AI models with different feature setups for the RoEduNet-SIMARGL2021 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Ov1.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/Ov1.png?raw=true)
 
 Overall performances for AI models with different feature setups for the CICIDS-2017 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Ov2.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/Ov2.png?raw=true)
 
 Accuracy per attack type (normal, DoS, and Port Scan) for the RoEduNet-SIMARGL2021 dataset.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Acc1.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/Acc1.png?raw=true)
 
 Accuracy per attack type (normal, DoS, Brute Force, Web attack, Infiltration, Bot, and Port Scan) for the CICIDS-2017 dataset with all features.
 
 ![image](
-https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Acc2.png?raw=true)
+https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/Acc2.png?raw=true)
 
 Quantification of enhancements of AI models in detecting attacks (given by number of AI models with best performance) under feature selection.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Qual.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/Qual.png?raw=true)
 
 Comparison of AI performance under top features selected by our framework versus those by information gain and K-best. Our framework has superior performance (bold text) in 22 of 28 AI models for the two datasets.
 
-![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/Comp.png?raw=true)
+![image](https://github.com/ogarreche/XAI_Feature_Selection/blob/main/images/Comp.png?raw=true)
 
 
 
