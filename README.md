@@ -155,3 +155,8 @@ methods, most of them do no need to train models beforehand.
 
 ![image](https://github.com/ogarreche/XAI_Feature_Selection_ACSAC_23/blob/main/images/table12.png?raw=true)
 
+### Example Program:
+
+In the Example folder, first run both RF.ipynb and Light.ipynb to generate the SHAP graph and feature importance list. Then Check the Example.xlsx to generate the proposed methods (this process is manual). After completing this step, there will be new features list (common features by overall rank, etc) to be used again in the RF.ipynb and Light.ipynb to generate the metrics considering such features. 
+
+
