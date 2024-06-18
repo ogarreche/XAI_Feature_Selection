@@ -68,8 +68,8 @@ Comparison of AI performance under top features selected by our framework versus
 ## Performance with different feature selections.
 
 - Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
-- The programs can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021 and end with sulfix acsac.
-- Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_acsac.py in the CICIDS-2017 folder will run the DNN model with the selected features for that given dataset. Inside each program you can find a description of each feature selection method along with its features, the user has to uncomment the one to be used).
+- The programs can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021 and end with sulfix final.
+- Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_final.py in the CICIDS-2017 folder will run the DNN model with the selected features for that given dataset. Inside each program you can find a description of each feature selection method along with its features, the user has to uncomment the one to be used).
 - Download that program 'utils.py' and leave it in the folder of the model program.
 - Each program outputs a confusion matrix, metrics scores (i.e. accuracy (ACC), precision (Prec), recall (Rec), F1-score (F1), Matthews correlation coefficient (MCC), balanced accuracy (BACC), and the area under ROC curve (AUCROC)), and the accuracy per attack type.
 - For Xplique, there is one jupyter notebook code for each dataset inside the xplique folder. Each program is standalone, and it ends with top features for each XAI method inside xplique. For more information about xplique see: https://github.com/deel-ai/xplique
