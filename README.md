@@ -85,7 +85,13 @@ Comparison of AI performance under top features selected by our framework versus
 
 ### Feature Correlation
 
-- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- Download one of the datasets. 
+
+RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee 
+
+CICIDS-2017: [https://www.kaggle.com/datasets/cicdataset/cicids2017](https://www.kaggle.com/datasets/usmanshuaibumusa/cicids-17)
+
+
 - The program can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021.
 - Download that program 'utils.py' and leave it in the folder of the model program.
 - The program is standalone program that outputs top features using the Feature Correlation method.
