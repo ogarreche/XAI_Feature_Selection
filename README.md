@@ -78,7 +78,12 @@ Comparison of AI performance under top features selected by our framework versus
 
 ### Chi-square
 
-- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- Download one of the datasets.
+- 
+RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee 
+
+CICIDS-2017: [https://www.kaggle.com/datasets/cicdataset/cicids2017](https://www.kaggle.com/datasets/usmanshuaibumusa/cicids-17)
+
 - The program can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021.
 - Download that program 'utils.py' and leave it in the folder of the model program.
 - The program is standalone program that outputs top features using the Chi-square method.
@@ -98,14 +103,27 @@ CICIDS-2017: [https://www.kaggle.com/datasets/cicdataset/cicids2017](https://www
 
 ### Feature Importance
 
-- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- Download one of the datasets. RoEduNet-SIMARGL2021:
+
+RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee 
+
+CICIDS-2017: [https://www.kaggle.com/datasets/cicdataset/cicids2017](https://www.kaggle.com/datasets/usmanshuaibumusa/cicids-17)
+
+
+
 - The program can be found inside the folder CICIDS-2017 or RoEduNet-SIMARGL2021.
 - Download that program 'utils.py' and leave it in the folder of the model program.
 - The program is standalone program that outputs top features using the Feature Importance method.
 
 ### Model Specific Features through SHAP (Used in methods below)
 
-- Download one of the datasets. RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee CICIDS-2017: https://www.kaggle.com/datasets/cicdataset/cicids2017
+- Download one of the datasets. 
+
+RoEduNet-SIMARGL2021: https://www.kaggle.com/datasets/7f91274fa3074d53e983f6eb7a7b24ad1dca136ca967ad0ebe48955e246c24ee 
+
+CICIDS-2017: [https://www.kaggle.com/datasets/cicdataset/cicids2017](https://www.kaggle.com/datasets/usmanshuaibumusa/cicids-17)
+
+
 - The programs can be found inside the folder CICIDS-2017/SHAP or RoEduNet-SIMARGL2021/SHAP and end with sulfix final.
 - Each program is a standalone program that is aimed to run one form of AI model within a set of features. (i.e. DNN_final.py in the CICIDS-2017 folder will run the DNN model with 15 features for that given dataset. On the other hand. DNN_all_final.py will run the DNN model for all features for the given dataset).
 - Download that program 'utils.py' and leave it in the folder of the model program.
