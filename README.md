@@ -184,3 +184,7 @@ methods, most of them do no need to train models beforehand.
 In the Example folder, first run both RF.ipynb and Light.ipynb to generate the SHAP graph and feature importance list. Then Check the Example.xlsx to generate the proposed methods (this process is manual). After completing this step, there will be new features list (common features by overall rank, etc) to be used again in the RF.ipynb and Light.ipynb to generate the metrics considering such features. 
 
 
+
+Note: The programs were tested on linux. If using windows, you might run in the error: "UnicodeDecodeError: 'utf-8' codec can't decode byte 0x96 in position 22398: invalid start byte
+", please refer to: https://github.com/ogarreche/Ensemble_Learning_2_Levels_IDS/issues/1 
+
