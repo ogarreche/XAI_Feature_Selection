@@ -1,0 +1,129 @@
+---------------------------------------------------------------------------------
+Top 15 - SPBO  score for SIMARGL
+
+Index(['TCP_WIN_MSS_IN', 'TCP_WIN_MIN_IN', 'LAST_SWITCHED', 'PROTOCOL',
+       'FLOW_ID', 'FIRST_SWITCHED', 'TCP_WIN_MIN_OUT', 'L4_DST_PORT',
+       'MAX_IP_PKT_LEN', 'TOTAL_FLOWS_EXP', 'TOTAL_PKTS_EXP', 'SRC_TOS',
+       'TCP_WIN_SCALE_OUT', 'MIN_IP_PKT_LEN', 'L4_SRC_PORT'],
+      dtype='object')
+
+---------------------------------------------------------------------------------
+TCP_WIN_MSS_IN,1.0
+TCP_WIN_MIN_IN,1.0
+LAST_SWITCHED,1.0
+PROTOCOL,1.0
+FLOW_ID,1.0
+FIRST_SWITCHED,0.9654000877210844
+TCP_WIN_MIN_OUT,0.9384157224377102
+L4_DST_PORT,0.8781298914432089
+MAX_IP_PKT_LEN,0.8663352264841448
+TOTAL_FLOWS_EXP,0.852190100938697
+TOTAL_PKTS_EXP,0.6894471632676625
+SRC_TOS,0.4821230768889375
+TCP_WIN_SCALE_OUT,0.4203391459108388
+MIN_IP_PKT_LEN,0.3960045541205285
+L4_SRC_PORT,0.38695352297671215
+TCP_WIN_MAX_IN,0.3415497020745772
+OUT_BYTES,0.3242136047995022
+TCP_WIN_MAX_OUT,0.28978096287164196
+DST_TOS,0.23499844732672492
+OUT_PKTS,0.23218383252876273
+IN_BYTES,0.22870731160532143
+TCP_FLAGS,0.22061897746071102
+FLOW_DURATION_MILLISECONDS,0.16715182450032778
+IN_PKTS,0.1514917152145808
+TCP_WIN_SCALE_IN,0.0
+TOTAL_BYTES_EXP,0.0
+
+
+
+---------------------------------------------------------------------------------
+Top 15 - SPBO  score for CICIDS
+
+Index([' Subflow Bwd Packets', ' SYN Flag Count', ' Flow Packets/s',
+       ' Flow Duration', ' Bwd URG Flags', ' Packet Length Mean',
+       'Init_Win_bytes_forward', ' Fwd IAT Min', ' Fwd Packet Length Min',
+       ' Bwd IAT Min', ' Max Packet Length', ' Flow IAT Std', ' Bwd IAT Max',
+       ' Active Min', ' ECE Flag Count'],
+      dtype='object')
+
+---------------------------------------------------------------------------------
+
+
+ Subflow Bwd Packets,1.0
+ Bwd URG Flags,1.0
+ Fwd IAT Min,1.0
+Init_Win_bytes_forward,1.0
+ Packet Length Mean,1.0
+ Fwd Packet Length Min,1.0
+ Flow Duration,1.0
+ Flow Packets/s,1.0
+ SYN Flag Count,1.0
+ Bwd IAT Min,0.9278431436933863
+ Max Packet Length,0.907228173305897
+ Flow IAT Std,0.9025804601058
+ Bwd IAT Max,0.8585624631393326
+ Active Min,0.8035112679648644
+ ECE Flag Count,0.789908421258388
+ Down/Up Ratio,0.7626265996994419
+ Fwd IAT Std,0.700456559467066
+ Fwd Avg Packets/Bulk,0.6959568782878108
+ Fwd Packet Length Max,0.6952167544810751
+ Idle Std,0.687806212680509
+ Subflow Bwd Bytes,0.6723096710400217
+ Bwd Packet Length Std,0.6538922018530167
+ PSH Flag Count,0.6425239525458843
+ Fwd Packet Length Std,0.635401486221093
+ Bwd Packets/s,0.6281291585618799
+ Bwd Packet Length Mean,0.624465327710585
+ Avg Fwd Segment Size,0.623832273083017
+ Fwd Header Length,0.6199878813135461
+ CWE Flag Count,0.6184459917109791
+ Subflow Fwd Bytes,0.6105690603685892
+ Packet Length Variance,0.6021446516981153
+Fwd IAT Total,0.5892900356490522
+ Bwd PSH Flags,0.5873454573195038
+ Flow IAT Mean,0.5856372227198778
+FIN Flag Count,0.5673414797415207
+ Init_Win_bytes_backward,0.5170167288578146
+ Total Length of Bwd Packets,0.5077757613909264
+ Fwd Avg Bulk Rate,0.4891069708959556
+ Packet Length Std,0.4877373944992835
+ act_data_pkt_fwd,0.4735831362885809
+Idle Mean,0.47287793676819984
+ Idle Min,0.4701276055070868
+ Total Backward Packets,0.44936274074581845
+ Fwd IAT Mean,0.42737586730698207
+ Active Max,0.41960238466363103
+Active Mean,0.4078784817249053
+Flow Bytes/s,0.3929527913920564
+ Fwd IAT Max,0.39256459773553515
+ min_seg_size_forward,0.38865421971509784
+ Bwd Avg Bytes/Bulk,0.3841480044608342
+Total Length of Fwd Packets,0.3720707638006622
+ ACK Flag Count,0.36425061602406006
+ Bwd IAT Std,0.3604872172239089
+ Bwd Avg Packets/Bulk,0.30428275734187515
+Bwd IAT Total,0.2889709035256714
+Bwd Avg Bulk Rate,0.26827255411664114
+Bwd Packet Length Max,0.24577662918912635
+Fwd PSH Flags,0.23852945707071277
+Fwd Packets/s,0.22211595731814318
+ Destination Port,0.1908373972666015
+Subflow Fwd Packets,0.1599086774174636
+ Average Packet Size,0.12699064999765178
+ Flow IAT Max,0.11470047478996116
+ Bwd Header Length,0.10817395949422806
+ Fwd Packet Length Mean,0.0
+ Fwd URG Flags,0.0
+ Bwd Packet Length Min,0.0
+ Idle Max,0.0
+ RST Flag Count,0.0
+ Flow IAT Min,0.0
+ Bwd IAT Mean,0.0
+ Avg Bwd Segment Size,0.0
+Fwd Avg Bytes/Bulk,0.0
+ Total Fwd Packets,0.0
+ Active Std,0.0
+ URG Flag Count,0.0
+ Min Packet Length,0.0
